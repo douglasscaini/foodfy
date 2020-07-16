@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 20px;
+    color: #111111;
+}
+
+.wrapper {
+    width: 940px;
+    margin: 35px auto;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+header a {
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;
+    color: #111111;
+    margin-right: 30px;
+}
+
+.hero {
+    width: 940px;
+    height: 365px;
+    background: #FBDFDB;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 32px;
+    line-height: 38px;
+    color: #111111;
+    margin-left: 60px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 28px;
+    opacity: 0.7;
+    margin-left: 60px;
+    max-width: 315px;
+    color: #000000;
+}
+
+.hero img {
+    justify-self: center;
+    padding-top: 65px;
+}
+
+main {
+    margin: 50px auto;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.card img {
+    width: 300px;
+    height: 140px;
+    border-radius: 15px;
+}
+
+.card h4 {
+    font-size: 18px;
+    line-height: 20px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.card p {
+    font-size: 14px;
+    line-height: 16px;
+    color: #777777;
+}
+
+footer {
+    height: 62px;
+    background-color: #EEEEEE;
+}
+
+footer p {
+    font-size: 14px;
+    line-height: 16px;
+    padding: 23px 0;
+    color: #999999;
+    text-align: center;
+}
+
+/* === ABOUT PAGE === */
+
+.about-content p {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+    margin-bottom: 30px;
+}
+
+.about-content h3 {
+    font-size: 20px;
+    line-height: 24px;
+    color: #111111;
+    margin-bottom: 20px;
+}
+
+/* === MODAL === */
+
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal {
+    height: 410px;
+    max-width: 660px;
+    width: 90%;
+    padding: 30px;
+    margin: 25vh auto;
+    border-radius: 15px;
+    position: relative;
+    box-sizing: border-box;
+    background: white;
+}
+
+.modal-content img {
+    width: 600px;
+    height: 200px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.modal-content h4 {
+    font-size: 24px;
+    line-height: 28px;
+    color: #111111;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.modal-content p {
+    font-size: 18px;
+    line-height: 20px;
+    color: #777777;
+    text-align: center;
+}
+
+.modal .close-modal {
+    font-size: 16px;
+    line-height: 20px;
+    color: #999999;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
