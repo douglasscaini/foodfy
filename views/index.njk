@@ -1,0 +1,30 @@
+{% extends 'layout.njk' %}
+
+{% block head %}
+    <title>Foodfy</title>
+{% endblock %}
+
+{% block content %}
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>{{home.title}}</h1>
+            <p>{{home.about}}</p>
+        </div>
+        <img src="{{home.chef_image}}" alt="Imagem do Chef de Cozinha">
+    </section>
+
+    <main>
+        <h2>{{home.main_title}}</h2>
+        <div class="cards">
+            {% for recipe in recipes %}
+                <div class="card">
+                    <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}">
+                    <h4>{{recipe.title}}</h4>
+                    <p>{{recipe.author}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+
+{% endblock %}

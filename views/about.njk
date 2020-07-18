@@ -1,0 +1,24 @@
+{% extends 'layout.njk' %}
+
+{% block head %}
+    <title>Sobre - Foodfy</title>
+{% endblock %}
+
+{% block content %}
+
+    <section class="about-content">
+
+        <h2>{{about.primary_title}}</h2>
+        <p>{{about.primary_text}}</p>
+        <p>{{about.second_text}}</p>
+
+        <h3>{{about.second_title}}.</h3>
+        <p>{{about.primary_text}}</p>
+        <p>{{about.second_text}}</p>
+
+        <h3>{{about.third_title}}</h3>
+        <p>{{about.second_text}}</p>
+
+    </section>
+
+{% endblock %}
