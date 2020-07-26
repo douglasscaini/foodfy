@@ -1,4 +1,4 @@
-/* === PAGE === */
+/* === ALL === */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 * {
@@ -15,24 +15,42 @@ body {
 h2 {
     font-size: 24px;
     line-height: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     color: #111111;
 }
 
-.wrapper {
+h3 {
+    font-size: 20px;
+    line-height: 24px;
+    color: #111111;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+li {
+    font-size: 18px;
+    line-height: 28px;
+    color: #444444;
+}
+
+/* === USERS PAGE === */
+
+.wrapper-users {
     width: 940px;
     margin: 35px auto;
     min-height: calc(100vh - 131px);
 }
 
-header {
+/* === HEADER USERS === */
+
+.header-users {
     display: grid;
     grid-template-columns: 210px 1fr;
     align-items: center;
     margin-bottom: 30px;
 }
 
-header a {
+.header-users a {
     font-size: 16px;
     line-height: 19px;
     text-decoration: none;
@@ -40,11 +58,11 @@ header a {
     margin-right: 30px;
 }
 
-header a.active {
+.header-users a.active {
     font-weight: bold;
 }
 
-/* === INDEX === */
+/* === INDEX USERS === */
 
 .hero {
     width: 940px;
@@ -54,9 +72,10 @@ header a.active {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
+    margin-top: 30px;
 }
 
-.hero h1 {
+.hero .hero-content h1 {
     font-size: 32px;
     line-height: 38px;
     color: #111111;
@@ -64,7 +83,7 @@ header a.active {
     margin-bottom: 10px;
 }
 
-.hero p {
+.hero .hero-content p {
     font-size: 18px;
     line-height: 28px;
     opacity: 0.7;
@@ -91,21 +110,21 @@ main {
     cursor: pointer;
 }
 
-.card img {
+.cards .card img {
     width: 300px;
     height: 140px;
     border-radius: 15px;
     object-fit: cover;
 }
 
-.card h4 {
+.cards .card h4 {
     font-size: 18px;
     line-height: 20px;
     margin-top: 20px;
     margin-bottom: 5px;
 }
 
-.card p {
+.cards .card p {
     font-size: 14px;
     line-height: 16px;
     color: #777777;
@@ -120,14 +139,7 @@ main {
     margin-bottom: 30px;
 }
 
-.about-content h3 {
-    font-size: 20px;
-    line-height: 24px;
-    color: #111111;
-    margin-bottom: 20px;
-}
-
-/* === RECIPE PAGE === */
+/* === RECIPE PAGE DESCRIPTION === */
 
 .recipe-content img {
     width: 940px;
@@ -154,19 +166,9 @@ main {
     font-weight: 400;
 }
 
-/* === RECIPE PAGE DESCRIPITION === */
-
 .title-button {
     align-items: center;
     display: flex;
-}
-
-.recipe-content h3 {
-    font-size: 24px;
-    line-height: 28px;
-    color: #111111;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 .recipe-content h4 {
@@ -178,12 +180,6 @@ main {
     margin-top: 20px;
     margin-bottom: 20px;
     cursor: pointer;
-}
-
-.recipe-content li {
-    font-size: 18px;
-    line-height: 28px;
-    color: #444444;
 }
 
 #text-left {
@@ -211,4 +207,161 @@ footer p {
     padding: 23px 0;
     color: #999999;
     text-align: center;
+}
+
+/* ---------- ADMIN ---------- */
+
+/* === HEADER ADMIN === */
+
+.header-admin {
+    background-color: #111111;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.align-logo {
+    width: 940px;
+    display: grid;
+    grid-template-columns: 210px 1fr;
+    align-items: center;
+}
+
+.header-admin a {
+    font-size: 16px;
+    line-height: 19px;
+    text-decoration: none;
+    color: white;
+    margin-right: 30px;
+}
+
+/* === INDEX ADMIN PAGE === */
+
+.wrapper-admin {
+    width: 940px;
+    margin: 35px auto;
+}
+
+.cards-admin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.card-admin {
+    display: flex;
+}
+
+.card-admin-img-content img {
+    width: 172px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.card-admin-content h4 {
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 400;
+    color: #111111;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.card-admin-content p {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 400;
+    color: #777777;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.button-view {
+    font-size: 14px;
+    line-height: 16px;
+    color: #6558C3;
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* === TOP CONTENT ADMIN === */
+
+.top-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.top-content-edit {
+    display: grid;
+    grid-template-columns: 20% 65% 15%;
+    align-items: center;
+}
+
+.top-content-edit .button-put, .button-delete, .button-save, a.button-action {
+    justify-self: end;
+    display: inline-block;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #6558C3;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.button-delete {
+    background-color: #DC4747;
+    justify-self: end;
+}
+
+/* === FIELDS ADMIN === */
+
+.fields h4 {
+    font-size: 16px;
+    line-height: 19px;
+    margin-top: 10px;
+}
+
+input, textarea {
+    width: 940px;
+    height: 49px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    padding-left: 20px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 24px;
+    outline: none;
+    resize: none;
+}
+
+textarea {
+    padding-top: 15px;
+}
+
+.add-ingredient, .add-preparation {
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: bold;
+    text-align: right;
+    color: #6558C3;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+    cursor: pointer;
+}
+
+#information {
+    height: 257px;
 }

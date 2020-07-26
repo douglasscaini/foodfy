@@ -1,4 +1,4 @@
-{% extends 'layout.njk' %}
+{% extends 'layout-users.njk' %}
 
 {% block head %}
     <title>Receitas - Foodfy</title>
@@ -11,7 +11,7 @@
             <div class="card">
                 <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}">
                 <h4>{{recipe.title}}</h4>
-                <p>{{recipe.author}}</p>
+                <p>por {{recipe.author}}</p>
             </div>
         {% endfor %}
     </div>

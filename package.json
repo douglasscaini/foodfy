@@ -11,7 +11,7 @@
     "url": "git+https://github.com/douglasscaini/foodfy.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Douglas Scaini",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/douglasscaini/foodfy/issues"
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/douglasscaini/foodfy#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "method-override": "^3.0.0",
     "nunjucks": "^3.2.1"
   },
   "devDependencies": {

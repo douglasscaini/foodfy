@@ -1,4 +1,4 @@
-{% extends 'layout.njk' %}
+{% extends 'layout-users.njk' %}
 
 {% block head %}
     <title>Foodfy</title>
@@ -8,20 +8,20 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>{{home.title}}</h1>
-            <p>{{home.about}}</p>
+            <h1>As melhores receitas</h1>
+            <p>Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo inteiro.</p>
         </div>
-        <img src="{{home.chef_image}}" alt="Imagem do Chef de Cozinha">
+        <img src="./assets/chef.png" alt="Imagem do Chef de Cozinha">
     </section>
 
     <main>
-        <h2>{{home.main_title}}</h2>
+        <h2>Mais acessadas</h2>
         <div class="cards">
             {% for recipe in recipes %}
                 <div class="card">
                     <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}">
                     <h4>{{recipe.title}}</h4>
-                    <p>{{recipe.author}}</p>
+                    <p>por {{recipe.author}}</p>
                 </div>
             {% endfor %}
         </div>

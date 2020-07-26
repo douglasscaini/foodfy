@@ -2,22 +2,27 @@
 <html>
     <head>
         <link rel="stylesheet" href="/styles.css">
+        <link rel="shortcut icon" href="/assets/icon.png"/>
         {% block head %}{% endblock %}
     </head>
+
     <body>
-        <div class="wrapper">
-            <header>
-                <a href="/"><img src="/assets/logo.png" href="/index.html" alt="Logomarca Foodfy"></a>
+        <div class="wrapper-users">
+            <header class="header-users">
+                <a href="/index"><img src="/assets/logo.png" alt="Logomarca Foodfy"></a>
                 <div class="links">
+                    <a href="/index">Início</a>
                     <a href="/about">Sobre</a>
                     <a href="/recipes">Receitas</a>
+                    <a href="/admin/recipes">Admin</a>
                 </div>
             </header>
             {% block content %}{% endblock %}
         </div>
+
         <footer>
             <p>Todos os direitos reservados - Foodfy, 2020</p>
         </footer>
-        <script src="/scripts.js"></script>
     </body>
 </html>
+<script src="/scripts/users.js"></script>

@@ -1,4 +1,4 @@
-{% extends 'layout.njk' %}
+{% extends 'layout-users.njk' %}
 
 {% block head %}
     <title>Receita - Foodfy</title>
@@ -10,7 +10,7 @@
 
         <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}">
         <h1>{{recipe.title}}</h1>
-        <h5>{{recipe.author}}</h5>
+        <h5>por {{recipe.author}}</h5>
 
         <div class="title-button">
             <h3>Ingredientes</h3>
@@ -19,7 +19,7 @@
 
         <div class="content-show-hide">
             {% for ingredient in recipe.ingredients %}
-                <li>{{ingredient}}</li>
+                <li>{{ingredient}};</li>
             {% endfor %}
         </div>
 
