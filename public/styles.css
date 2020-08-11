@@ -1,212 +1,267 @@
-/* === ALL === */
+/* ---------- ALL ---------- */
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 * {
-    border: 0;
-    margin: 0;
-    padding: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: white;
-    font-family: 'Roboto', sans-serif;
+  background-color: white;
+  font-family: 'Roboto', sans-serif;
 }
 
 h2 {
-    font-size: 24px;
-    line-height: 28px;
-    margin-bottom: 25px;
-    color: #111111;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom: 25px;
+  color: #111111;
 }
 
 h3 {
-    font-size: 20px;
-    line-height: 24px;
-    color: #111111;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  font-size: 20px;
+  line-height: 24px;
+  color: #111111;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 li {
-    font-size: 18px;
-    line-height: 28px;
-    color: #444444;
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
 }
+
+/* ---------- USERS ---------- */
 
 /* === USERS PAGE === */
 
 .wrapper-users {
-    width: 940px;
-    margin: 35px auto;
-    min-height: calc(100vh - 131px);
+  width: 940px;
+  margin: 35px auto;
+  min-height: calc(100vh - 131px);
 }
 
 /* === HEADER USERS === */
 
 .header-users {
-    display: grid;
-    grid-template-columns: 210px 1fr;
-    align-items: center;
-    margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 210px 1fr 1fr;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header-users .links {
+  display: flex;
 }
 
 .header-users a {
-    font-size: 16px;
-    line-height: 19px;
-    text-decoration: none;
-    color: #111111;
-    margin-right: 30px;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: none;
+  color: #111111;
+  margin-right: 30px;
 }
 
 .header-users a.active {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+/* === USERS FILTER === */
+
+.header-users form {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  grid-gap: 0px;
+}
+
+.header-users form input {
+  width: 235px;
+  height: 37px;
+  margin: 0;
 }
 
 /* === INDEX USERS === */
 
 .hero {
-    width: 940px;
-    height: 365px;
-    background: #FBDFDB;
-    border-radius: 30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    margin-top: 30px;
+  width: 940px;
+  height: 365px;
+  background: #FBDFDB;
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-top: 30px;
 }
 
 .hero .hero-content h1 {
-    font-size: 32px;
-    line-height: 38px;
-    color: #111111;
-    margin-left: 60px;
-    margin-bottom: 10px;
+  font-size: 32px;
+  line-height: 38px;
+  color: #111111;
+  margin-left: 60px;
+  margin-bottom: 10px;
 }
 
 .hero .hero-content p {
-    font-size: 18px;
-    line-height: 28px;
-    opacity: 0.7;
-    margin-left: 60px;
-    max-width: 315px;
-    color: #000000;
+  font-size: 18px;
+  line-height: 28px;
+  opacity: 0.7;
+  margin-left: 60px;
+  max-width: 315px;
+  color: #000000;
 }
 
 .hero img {
-    justify-self: center;
-    padding-top: 65px;
+  justify-self: center;
+  padding-top: 65px;
 }
 
 main {
-    margin: 50px auto;
+  margin: 50px auto;
 }
 
-/* === CARDS INDEX AND RECIPES === */
+/* === CARDS INDEX AND RECIPES USERS === */
 
 .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    cursor: pointer;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.card a {
+  text-decoration: none;
+  color: black;
 }
 
 .cards .card img {
-    width: 300px;
-    height: 140px;
-    border-radius: 15px;
-    object-fit: cover;
+  width: 300px;
+  height: 140px;
+  border-radius: 15px;
+  object-fit: cover;
 }
 
 .cards .card h4 {
-    font-size: 18px;
-    line-height: 20px;
-    margin-top: 20px;
-    margin-bottom: 5px;
+  font-size: 18px;
+  line-height: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
 }
 
 .cards .card p {
-    font-size: 14px;
-    line-height: 16px;
-    color: #777777;
+  font-size: 14px;
+  line-height: 16px;
+  color: #777777;
 }
 
-/* === ABOUT PAGE === */
+/* === ABOUT PAGE USERS === */
 
 .about-content p {
-    font-size: 18px;
-    line-height: 28px;
-    color: #444444;
-    margin-bottom: 30px;
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+  margin-bottom: 30px;
 }
 
-/* === RECIPE PAGE DESCRIPTION === */
+/* === PAGINATE RECIPES === */
 
-.recipe-content img {
-    width: 940px;
-    height: 280px;
-    border-radius: 15px;
-    margin-bottom: 50px;
+.pagination {
+  text-align: center;
+  margin-top: 50px;
 }
 
-.recipe-content h1 {
-    font-size: 36px;
-    line-height: 42px;
-    color: #111111;
-    text-align: center;
-    margin-bottom: 5px;
+.pagination a, .pagination span {
+  color: #6558C3;
+  text-decoration: none;
+  margin-right: 10px;
 }
 
-.recipe-content h5 {
-    font-size: 20px;
-    line-height: 24px;
-    font-size: 20px;
-    color: #777777;
-    text-align: center;
-    margin-bottom: 30px;
-    font-weight: 400;
+.pagination a:hover {
+  filter: brightness(0.5);
+}
+
+/* === RECIPE PAGE DESCRIPTION USERS === */
+
+.page-content img {
+  width: 940px;
+  height: 280px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  object-fit: cover;
+}
+
+.page-content h1 {
+  font-size: 36px;
+  line-height: 42px;
+  color: #111111;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.page-content h5 {
+  font-size: 20px;
+  line-height: 24px;
+  font-size: 20px;
+  color: #777777;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 400;
 }
 
 .title-button {
-    align-items: center;
-    display: flex;
+  align-items: center;
+  display: flex;
 }
 
-.recipe-content h4 {
-    font-size: 12px;
-    line-height: 14px;
-    font-weight: bold;
-    color: #999999;
-    margin-left: 8px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    cursor: pointer;
+.page-content h4 {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: bold;
+  color: #999999;
+  margin-left: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
 #text-left {
-    font-size: 18px;
-    line-height: 28px;
-    color: #444444;
-    white-space: pre-line;
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
+  white-space: pre-line;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
-/* === FOOTER === */
+/* === CHEF USERS PAGE === */
+
+.card-chef-content p {
+  font-size: 14px;
+  line-height: 16px;
+  color: #666666;
+  margin-left: 20px;
+}
+
+/* === FOOTER USERS === */
 
 footer {
-    height: 62px;
-    width: 100%;
-    background-color: #EEEEEE;
+  height: 62px;
+  width: 100%;
+  background-color: #EEEEEE;
 }
 
 footer p {
-    font-size: 14px;
-    line-height: 16px;
-    padding: 23px 0;
-    color: #999999;
-    text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 23px 0;
+  color: #999999;
+  text-align: center;
 }
 
 /* ---------- ADMIN ---------- */
@@ -214,154 +269,214 @@ footer p {
 /* === HEADER ADMIN === */
 
 .header-admin {
-    background-color: #111111;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
+  background-color: #111111;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
 }
 
 .align-logo {
-    width: 940px;
-    display: grid;
-    grid-template-columns: 210px 1fr;
-    align-items: center;
+  width: 940px;
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  align-items: center;
 }
 
 .header-admin a {
-    font-size: 16px;
-    line-height: 19px;
-    text-decoration: none;
-    color: white;
-    margin-right: 30px;
+  font-size: 15px;
+  line-height: 18px;
+  text-decoration: none;
+  color: #999999;
+  margin-right: 30px;
+  text-transform: uppercase;
 }
 
-/* === INDEX ADMIN PAGE === */
+.header-admin a.active {
+  color: white;
+}
+
+/* === INDEX PAGE ADMIN === */
 
 .wrapper-admin {
-    width: 940px;
-    margin: 35px auto;
+  width: 940px;
+  margin: 35px auto;
 }
 
 .cards-admin {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .card-admin {
-    display: flex;
+  display: flex;
 }
 
 .card-admin-img-content img {
-    width: 172px;
-    height: 80px;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-bottom: 20px;
+  width: 172px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 20px;
 }
 
 .card-admin-content h4 {
-    font-size: 18px;
-    line-height: 21px;
-    font-weight: 400;
-    color: #111111;
-    margin-left: 20px;
-    margin-bottom: 5px;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 400;
+  color: #111111;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-bottom: 5px;
 }
 
 .card-admin-content p {
-    font-size: 14px;
-    line-height: 16px;
-    font-weight: 400;
-    color: #777777;
-    margin-left: 20px;
-    margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #777777;
+  margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 .button-view {
-    font-size: 14px;
-    line-height: 16px;
-    color: #6558C3;
-    margin-left: 20px;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+  color: #6558C3;
+  margin-left: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* === TOP CONTENT ADMIN === */
+/* === TOP CONTENT ADMIN - ALL PAGES ADMIN === */
 
 .top-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
 }
 
 .top-content-edit {
-    display: grid;
-    grid-template-columns: 20% 65% 15%;
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
 }
 
-.top-content-edit .button-put, .button-delete, .button-save, a.button-action {
-    justify-self: end;
-    display: inline-block;
-    font-size: 16px;
-    text-decoration: none;
-    text-align: center;
-    padding: 10px 20px;
-    background-color: #6558C3;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
+.top-content-edit .buttons-edit {
+  justify-self: end;
 }
 
-.button-delete {
-    background-color: #DC4747;
-    justify-self: end;
+.buttons-edit .button-delete {
+  background-color: #DC4747;
+  margin-right: 5px;
 }
 
-/* === FIELDS ADMIN === */
+button[type="submit"] {
+  background: #6558C3;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  line-height: 19px;
+  cursor: pointer;
+}
+
+.button-default, .button-delete, .button-action-a {
+  justify-self: end;
+  display: inline-block;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background: #6558C3;
+  border-radius: 5px;
+  color: white;
+}
+
+/* === FIELDS RECIPES ADMIN === */
 
 .fields h4 {
-    font-size: 16px;
-    line-height: 19px;
-    margin-top: 10px;
+  font-size: 16px;
+  line-height: 19px;
+  margin-top: 30px;
 }
 
-input, textarea {
-    width: 940px;
-    height: 49px;
-    background-color: #FFFFFF;
-    border: 1px solid #DDDDDD;
-    box-sizing: border-box;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-top: 10px;
-    padding-left: 20px;
-    font-family: 'Roboto', sans-serif;
-    line-height: 24px;
-    outline: none;
-    resize: none;
+input, textarea, select {
+  width: 940px;
+  height: 49px;
+  background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 10px;
+  padding-left: 20px;
+  font-family: 'Roboto', sans-serif;
+  line-height: 24px;
+  outline: none;
+  resize: none;
 }
 
 textarea {
-    padding-top: 15px;
+  padding-top: 15px;
 }
 
 .add-ingredient, .add-preparation {
-    font-size: 16px;
-    line-height: 19px;
-    font-weight: bold;
-    text-align: right;
-    color: #6558C3;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    background-color: white;
-    cursor: pointer;
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: bold;
+  text-align: right;
+  color: #6558C3;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  cursor: pointer;
 }
 
 #information {
-    height: 257px;
+  height: 257px;
+}
+
+/* === CHEFS INDEX ADMIN === */
+
+.cards-chefs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.card-chef {
+  display: flex;
+  align-items: center;
+}
+
+.card-chef-img-content img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card-chef-content h4 {
+  font-size: 18px;
+  line-height: 21px;
+  color: #111111;
+  font-weight: 400;
+  margin-left: 20px;
+  margin-bottom: 5px;
+}
+
+/* === CHEFS SHOW ADMIN === */
+
+.center-image {
+  text-align: center;
+}
+
+.center-image .chef-image-show {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
 }

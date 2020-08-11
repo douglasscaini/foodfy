@@ -1,0 +1,28 @@
+{% extends 'layouts/users.njk' %}
+
+{% block head %}
+  <title>Foodfy - Receitas</title>
+{% endblock %}
+
+{% block filter %}
+  <form action="/results" method="GET">
+    <input type="text" name="filter" placeholder="Buscar uma receita...">
+    <button type="submit" class="btn">Buscar</button>
+  </form>
+{% endblock %}
+
+{% block content %}
+  <div class="cards">
+    {% for recipe in recipes %}
+      <div class="card">
+        <a href="/recipes/{{recipe.id}}">
+          <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}">
+          <h4>{{recipe.title}}</h4>
+          <p>por {{recipe.chef_name}}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="pagination" data-page={{pagination.page}} data-total={{pagination.total}}></div>
+{% endblock %}

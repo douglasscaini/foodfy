@@ -1,0 +1,24 @@
+{% extends 'layouts/admin.njk' %}
+
+{% block head %}
+  <title>Admin - Editando Chef</title>
+{% endblock %}
+
+{% block content %}
+  <div class="top-content-edit">
+    <h2>Editando Chef</h2>
+    <div class="buttons-edit">
+      <button form="form-delete" class="button-delete" type="submit">Deletar</button>
+      <button form="form-put" class="button-default" type="submit">Salvar Chef</button>
+    </div>
+  </div>
+
+  <form method="POST" action="/admin/chefs/?_method=PUT" id="form-put">
+    {% include 'admin/chefs/fields.njk' %}
+    <input type="hidden" name="id" value="{{chef.id}}">
+  </form>
+
+  <form method="POST" action="/admin/chefs/?_method=DELETE" id="form-delete">
+    <input type="hidden" name="id" value="{{chef.id}}">
+  </form>
+{% endblock %}
