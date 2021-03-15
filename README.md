@@ -18,32 +18,28 @@
 </div>
 
 ## :warning: Instalação <a name="install"></a>
-> Esse projeto usa o SGBD postgreSQL. Segue as querys para funcionamento:
+> Esse projeto usou como SGBD o postgreSQL. Para o funcionamento é preciso realizar algumas configurações:
+
+
+> Criar o bando de dados:
 
 ```sh
 CREATE DATABASE foodfy;
-
-CREATE TABLE recipes(
-  id serial primary key,
-  chef_id int not null,
-  image text not null,
-  title text not null,
-  ingredients text[] not null,
-  preparation text[] not null,
-  information text not null,
-  created_at date not null);
-
-  CREATE TABLE chefs(
-  id serial primary key,
-  name text not null,
-  avatar_url text not null,
-  created_at date not null);
-
-Configurar os dados de seu SGBD em 'src/config/db.js'
-Algumas querys de dados se encontram em 'src/config/data.sql'
 ```
 
-> Depois de configurar o SGDB, instalar as dependências do projeto:
+> Rodar as querys disponíveis em:
+
+```sh
+src/config/foodfy.sql
+```
+
+> Configurar os dados de seu SGBD em:
+
+```sh
+src/config/db.js
+```
+
+> Instalar as dependências e iniciar o projeto:
 
 ```sh
 npm install # instala as dependências...
@@ -53,11 +49,20 @@ npm start # roda o projeto...
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>
 > Aprender diversos conceitos de programação, entre eles: rotas, banco de dados e lógica de paginação...
 
+*A realizar:*
+- Organização
+- Arrumar footer
+- Remomear variáveis
+- Show chefs users page
+- Limpar repetição de código
+- Lógica uma imagem na inserção
+
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 
 - PostgreSQL
 - Nunjucks
 - Express
+- Multer
 
 ---
 

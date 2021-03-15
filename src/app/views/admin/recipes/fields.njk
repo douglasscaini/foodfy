@@ -1,4 +1,41 @@
 <div class="fields">
+
+  <div class="avatar_url">
+    <h4>Imagem da receita</h4>
+
+    <div class="photos-container">
+      <div class="recipes-photos-uploud">
+        <input
+        id="recipes-photos-input"
+        type="file"
+        name="recipes-photos"
+        accept="/image/*"
+        onChange="PhotosUploud.handleFileInput(event)"
+        multiple
+      >
+        <p class="material-icons">add</p>
+      </div>
+
+      <div class="photos-preview">
+        {% for file in filesRecipe %}
+          {% if file %}
+            <div class="photo" id="{{file.id}}">
+              <img src="{{file.src}}" alt="{{file.name}}">
+              <i
+            class="material-icons"
+            onclick="PhotosUploud.removeOldPhoto(event)"
+          >
+          close
+          </i>
+            </div>
+            <input type="hidden" name="file_id" value="{{file.id}}">
+          {% endif %}
+        {% endfor %}
+        <input type="hidden" name="removed_files">
+      </div>
+    </div>
+  </div>
+
   <div class="chef_id">
     <h4>Chef</h4>
     <select name="chef_id" required>
@@ -7,11 +44,6 @@
         <option value="{{chef.id}}" {% if recipe.chef_id == chef.id %} selected="selected" {% endif %}>{{chef.name}}</option>
       {% endfor %}
     </select>
-  </div>
-
-  <div class="image">
-    <h4>Imagem da receita</h4>
-    <input type="url" name="image" value="{{recipe.image}}" required>
   </div>
 
   <div class="title">

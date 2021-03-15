@@ -1,9 +1,9 @@
-const { Pool } = require('pg')
+const { Pool } = require("pg");
 
 module.exports = new Pool({
-  user: 'postgres',
-  password: '',
-  host: 'localhost',
+  user: "postgres",
+  password: "admin",
+  host: "localhost",
   port: 5432,
-  database: 'foodfy'
-})
+  database: "foodfy",
+});

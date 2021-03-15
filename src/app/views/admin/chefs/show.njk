@@ -12,11 +12,12 @@
 
   <div class="page-content">
     <div class="center-image">
-      <img class="chef-image-show" src="{{chef.avatar_url}}" alt="Imagem de {{chef.name}}">
+      <img class="chef-image-show" src="{{file.src}}" alt="Imagem de {{chef.name}}">
     </div>
 
     <h1>{{chef.name }}</h1>
-    <h5>{{recipes.length}} {{"receita" if recipes.length == 1 else "receitas"}}</h5>
+    <h5>{{recipes.length}}
+      {{"receita" if recipes.length == 1 else "receitas"}}</h5>
 
     <div class="title-button">
       <h3>Receitas</h3>
@@ -26,7 +27,7 @@
       {% for recipe in recipes %}
         <div class="card-admin">
           <div class="card-admin-img-content">
-            <img src="{{recipe.image}}" alt="Imagem de {{recipe.title}}">
+            <img src="{{recipe.file.src}}" alt="Imagem de {{recipe.title}}">
           </div>
           <div class="card-admin-content">
             <h4>{{recipe.title}}</h4>

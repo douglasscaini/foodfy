@@ -9,12 +9,13 @@
     {% for chef in chefs %}
       <div class="card-chef">
         <div class="card-chef-img-content">
-          <img src="{{chef.avatar_url}}" alt="Imagem de {{recipe.name}}">
+          <img src="{{chef.file.src}}" alt="Imagem de {{recipe.name}}">
         </div>
 
         <div class="card-chef-content">
           <h4>{{chef.name}}</h4>
-          <p>{{chef.total_recipes}} {{"receita" if chef.total_recipes == 1 else "receitas"}}</p>
+          <p>{{chef.total_recipes}}
+            {{"receita" if chef.total_recipes == 1 else "receitas"}}</p>
         </div>
       </div>
     {% endfor %}
