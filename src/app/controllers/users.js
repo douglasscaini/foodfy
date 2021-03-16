@@ -49,31 +49,35 @@ module.exports = {
         limit,
         offset,
         async callback(recipes) {
-          const pagination = {
-            total: Math.ceil(recipes[0].total / limit) || 0,
-            page,
-          };
+          if (recipes[0] == undefined) {
+            res.send("Ao menos uma receita deve ser cadastrada antes da visualização!");
+          } else {
+            const pagination = {
+              total: Math.ceil(recipes[0].total / limit) || 0,
+              page,
+            };
 
-          async function getImage(recipeId) {
-            let results = await Recipe.getRecipeFiles(recipeId);
+            async function getImage(recipeId) {
+              let results = await Recipe.getRecipeFiles(recipeId);
 
-            results = results.map((recipe) => ({
-              ...recipe,
-              src: `${req.protocol}://${req.headers.host}${recipe.path.replace("public", "")}`,
-            }));
+              results = results.map((recipe) => ({
+                ...recipe,
+                src: `${req.protocol}://${req.headers.host}${recipe.path.replace("public", "")}`,
+              }));
 
-            return results[0];
+              return results[0];
+            }
+
+            const recipesPromise = recipes.map(async (recipe) => {
+              recipe.file = await getImage(recipe.id);
+
+              return recipe;
+            });
+
+            let recipesList = await Promise.all(recipesPromise);
+
+            return res.render("users/recipes", { recipes: recipesList, pagination });
           }
-
-          const recipesPromise = recipes.map(async (recipe) => {
-            recipe.file = await getImage(recipe.id);
-
-            return recipe;
-          });
-
-          let recipesList = await Promise.all(recipesPromise);
-
-          return res.render("users/recipes", { recipes: recipesList, pagination });
         },
       };
 

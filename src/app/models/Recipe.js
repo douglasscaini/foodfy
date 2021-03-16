@@ -1,4 +1,5 @@
 const db = require("../../config/db");
+const { date } = require("../../lib/utils");
 
 module.exports = {
   async all() {
@@ -7,6 +8,7 @@ module.exports = {
                   FROM recipes
                   INNER JOIN chefs
                   ON recipes.chef_id = chefs.id
+                  ORDER BY created_at DESC
                   `;
 
     let results = await db.query(query);
@@ -17,12 +19,20 @@ module.exports = {
   async create(data) {
     const query = `
                   INSERT INTO recipes
-                  (chef_id, title, ingredients, preparation, information)
-                  VALUES ($1, $2, $3, $4, $5)
+                  (chef_id, title, ingredients, preparation, information, created_at, updated_at)
+                  VALUES ($1, $2, $3, $4, $5, $6, $7)
                   RETURNING id
                   `;
 
-    const values = [data.chef_id, data.title, data.ingredients, data.preparation, data.information];
+    const values = [
+      data.chef_id,
+      data.title,
+      data.ingredients,
+      data.preparation,
+      data.information,
+      date(Date.now()).iso,
+      date(Date.now()).iso,
+    ];
 
     let results = await db.query(query, values);
 
@@ -70,7 +80,7 @@ module.exports = {
     return db.query(query, [id]);
   },
 
-  async checkRecipe(id, callback) {
+  async checkRecipe(id) {
     const query = `
                   SELECT recipes FROM recipes WHERE chef_id=$1
                   `;
@@ -101,6 +111,7 @@ module.exports = {
                   ON chefs.id = recipes.chef_id
                   WHERE recipes.title ILIKE '%${filter}%'
                   OR chefs.name ILIKE '%${filter}%'
+                  ORDER BY recipes.updated_at DESC
                   `;
 
     let results = await db.query(query);
@@ -126,6 +137,7 @@ module.exports = {
             FROM recipes
             INNER JOIN chefs
             ON recipes.chef_id = chefs.id
+            ORDER BY created_at DESC
             LIMIT $1 OFFSET $2
             `;
 

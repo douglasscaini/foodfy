@@ -21,48 +21,42 @@
 > Esse projeto usou como SGBD o postgreSQL. Para o funcionamento é preciso realizar algumas configurações:
 
 
-> Criar o bando de dados:
-
+- Criar o banco de dados:
 ```sh
 CREATE DATABASE foodfy;
 ```
 
-> Rodar as querys disponíveis em:
-
+- Rodar as querys disponíveis em:
 ```sh
 src/config/foodfy.sql
 ```
 
-> Configurar os dados de seu SGBD em:
-
+- Configurar os dados do SGBD em:
 ```sh
 src/config/db.js
 ```
 
-> Instalar as dependências e iniciar o projeto:
-
+- Instalar as dependências e iniciar o projeto:
 ```sh
 npm install # instala as dependências...
 npm start # roda o projeto...
 ```
 
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>
-> Aprender diversos conceitos de programação, entre eles: rotas, banco de dados e lógica de paginação...
+> Aprender conceitos de programação, entre eles: rotas, banco de dados e lógica de paginação...
 
 *A realizar:*
 - Organização
-- Arrumar footer
 - Remomear variáveis
 - Show chefs users page
 - Limpar repetição de código
-- Lógica uma imagem na inserção
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 
-- PostgreSQL
-- Nunjucks
-- Express
 - Multer
+- Express
+- Nunjucks
+- PostgreSQL
 
 ---
 

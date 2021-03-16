@@ -127,7 +127,7 @@ module.exports = {
         await Promise.all(removedFilesPromise);
       }
 
-      return res.redirect("/admin/chefs");
+      return res.redirect(`/admin/chefs/${req.body.id}`);
     } catch (error) {
       console.error(`Erro na atualização do chef! ${error}`);
     }

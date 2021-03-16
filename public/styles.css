@@ -64,6 +64,10 @@ li {
   margin-right: 30px;
 }
 
+.header-users a:hover {
+  font-weight: bold;
+}
+
 .header-users a.active {
   font-weight: bold;
 }
@@ -292,6 +296,10 @@ footer p {
   color: #999999;
   margin-right: 30px;
   text-transform: uppercase;
+}
+
+.header-admin a:hover {
+  color: white;
 }
 
 .header-admin a.active {
@@ -610,7 +618,6 @@ input[type="file"] {
 .gallery .highlight > img {
   width: 100%;
   height: 280px;
-  object-fit: none;
   object-position: 50% 50%;
   border: 1px solid #efefef;
   margin-bottom: 5px;

@@ -66,12 +66,10 @@ module.exports = {
 
       await Promise.all(recipeFilesPromise);
 
-      return res.redirect(`/admin/recipes/`);
+      return res.redirect(`/admin/recipes`);
     } catch (error) {
       console.error(`Erro na criação das receitas! ${error}`);
     }
-
-    return res.redirect(`/admin/recipes`);
   },
 
   async show(req, res) {
@@ -132,9 +130,15 @@ module.exports = {
       Recipe.update(req.body);
 
       if (req.body.removed_files) {
+        const recipeFiles = await Recipe.getRecipeFiles(req.body.id);
+
         let removedFiles = req.body.removed_files.split(",");
         const lastIndex = removedFiles.length - 1;
         removedFiles.splice(lastIndex, 1);
+
+        if (req.files && req.files.length === 0 && removedFiles.length == recipeFiles.length) {
+          return res.send("No mínimo uma imagem é necessária!");
+        }
 
         const removedFilesPromise = removedFiles.map(async (id) => {
           await FileRecipe.delete(id);

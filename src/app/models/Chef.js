@@ -1,4 +1,5 @@
 const db = require("../../config/db");
+const { date } = require("../../lib/utils");
 
 module.exports = {
   async all() {
@@ -13,12 +14,12 @@ module.exports = {
 
   create(chef) {
     const query = `
-                  INSERT INTO chefs (file_id, name)
-                  VALUES ($1, $2)
+                  INSERT INTO chefs (file_id, name, created_at, updated_at)
+                  VALUES ($1, $2, $3, $4)
                   RETURNING id
                   `;
 
-    const values = [chef.file_id, chef.name];
+    const values = [chef.file_id, chef.name, date(Date.now()).iso, date(Date.now()).iso];
 
     return db.query(query, values);
   },
@@ -39,6 +40,7 @@ module.exports = {
                   FROM recipes
                   INNER JOIN chefs ON (recipes.chef_id = chefs.id)
                   GROUP BY chefs.id
+                  ORDER BY created_at DESC
                   `;
 
     let results = await db.query(query);
@@ -52,6 +54,7 @@ module.exports = {
                   FROM recipes
                   INNER JOIN chefs ON (recipes.chef_id = chefs.id)
                   WHERE chefs.id = $1
+                  ORDER BY created_at DESC
                   `;
 
     let results = await db.query(query, [id]);
@@ -94,6 +97,7 @@ module.exports = {
                   SELECT chefs.*, files.path as file
                   FROM chefs
                   LEFT JOIN files ON (chefs.file_id = files.id)
+                  ORDER BY created_at DESC
                   `;
 
     const results = await db.query(query);
