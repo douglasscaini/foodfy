@@ -98,6 +98,7 @@ const PhotosUploud = {
 
     PhotosUploud.input.files = PhotosUploud.getAllFiles();
   },
+
   hasLimit(event) {
     const { uploudLimit, input, preview } = PhotosUploud;
     const { files: fileList } = input;
@@ -128,6 +129,7 @@ const PhotosUploud = {
 
     return false;
   },
+
   getAllFiles() {
     const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer();
 
@@ -135,6 +137,7 @@ const PhotosUploud = {
 
     return dataTransfer.files;
   },
+
   getContainer(image) {
     const div = document.createElement("div");
 
@@ -148,6 +151,7 @@ const PhotosUploud = {
 
     return div;
   },
+
   getRemoveButton() {
     const button = document.createElement("i");
 
@@ -156,6 +160,7 @@ const PhotosUploud = {
 
     return button;
   },
+
   removePhoto(event) {
     const photoDiv = event.target.parentNode;
     const photosArray = Array.from(PhotosUploud.preview.children);
@@ -166,6 +171,7 @@ const PhotosUploud = {
 
     photoDiv.remove();
   },
+
   removeOldPhoto(event) {
     const photoDiv = event.target.parentNode;
 

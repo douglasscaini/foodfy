@@ -1,10 +1,14 @@
 const express = require("express");
 const routes = express.Router();
 
-const multer = require("./app/middlewares/multer");
-const recipes = require("./app/controllers/admin/recipes");
-const chefs = require("./app/controllers/admin/chefs");
-const users = require("./app/controllers/users");
+const multer = require("../app/middlewares/multer");
+const recipes = require("../app/controllers/admin/recipes");
+const chefs = require("../app/controllers/admin/chefs");
+const useers = require("../app/controllers/users");
+
+const users = require("./users");
+
+routes.use("/users", users);
 
 routes.get("/", (req, res) => {
   return res.redirect("/index");
@@ -27,12 +31,12 @@ routes.post("/admin/chefs", multer.array("chefs-photos", 6), chefs.post);
 routes.put("/admin/chefs", multer.array("chefs-photos", 6), chefs.put);
 routes.delete("/admin/chefs", chefs.delete);
 
-/* === USERS AREA === */
-routes.get("/index", users.index);
-routes.get("/about", users.about);
-routes.get("/recipes/:id", users.show);
-routes.get("/recipes", users.recipes);
-routes.get("/chefs", users.chefs);
-routes.get("/results", users.results);
+/* === useers AREA === */
+routes.get("/index", useers.index);
+routes.get("/about", useers.about);
+routes.get("/recipes/:id", useers.show);
+routes.get("/recipes", useers.recipes);
+routes.get("/chefs", useers.chefs);
+routes.get("/results", useers.results);
 
 module.exports = routes;

@@ -14,8 +14,13 @@
           <a href="/about">Sobre</a>
           <a href="/recipes">Receitas</a>
           <a href="/chefs">Chefs</a>
+          <a href="/admin/chefs">Login</a>
         </div>
-        {% block filter %}{% endblock %}
+
+        <form action="/results" method="GET">
+          <input type="text" name="filter" placeholder="Buscar uma receita...">
+          <button type="submit" class="btn">Buscar</button>
+        </form>
       </header>
       {% block content %}{% endblock %}
     </div>

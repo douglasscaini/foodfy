@@ -85,6 +85,7 @@ function createPagination(pagination) {
       }
     }
   }
+
   pagination.innerHTML = elements;
 }
 
