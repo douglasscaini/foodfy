@@ -1,0 +1,53 @@
+.logout-container-header form button {
+  background: none;
+  color: #999999;
+  font-size: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.logout-container-header form button:hover {
+  color: white;
+}
+
+.session-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+}
+
+.session-form-header {
+  text-align: center;
+}
+
+.session-form-inputs input {
+  width: 500px;
+  margin-bottom: 35px;
+}
+
+.session-form-bottom {
+  display: flex;
+  margin-top: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.session-form-bottom a {
+  font-size: 16px;
+  color: #969696;
+  text-decoration: none;
+}
+
+.session-form-bottom a:hover {
+  font-weight: bold;
+}
+
+.session-form-bottom button {
+  width: 140px;
+  height: 38px;
+}
+
+.session-form-bottom button:hover {
+  background: #796ecc;
+}

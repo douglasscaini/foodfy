@@ -1,0 +1,26 @@
+{% extends 'layouts/admin.njk' %}
+
+{% block head %}
+  <title>Admin - Atualizar Usuário</title>
+{% endblock %}
+
+{% block content %}
+  <div class="top-content">
+    <h2>Atualizar Usuário</h2>
+
+    <div class="buttons-container">
+      <button form="form-delete" class="button-users" id="button-users-delete" type="submit">Deletar</button>
+      <button form="form-put" class="button-users" type="submit">Salvar</button>
+    </div>
+  </div>
+
+  <form method="POST" action="/admin/users/{{user.id}}?_method=PUT" id="form-put">
+    {% include "user/fields.njk" %}
+
+    <input type="hidden" name="id" value="{{user.id}}">
+  </form>
+
+  <form method="POST" action="/users?_method=DELETE" id="form-delete">
+    <input type="hidden" name="id" value="{{user.id}}">
+  </form>
+{% endblock %}

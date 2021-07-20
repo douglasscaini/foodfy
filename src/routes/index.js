@@ -7,8 +7,7 @@ const chefs = require("../app/controllers/admin/chefs");
 const useers = require("../app/controllers/users");
 
 const users = require("./users");
-
-routes.use("/users", users);
+routes.use("/admin/users", users);
 
 routes.get("/", (req, res) => {
   return res.redirect("/index");

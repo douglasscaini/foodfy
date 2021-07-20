@@ -1,0 +1,33 @@
+{% extends 'layouts/users.njk' %}
+
+{% block head %}
+  <title>Foodfy - Chefs</title>
+{% endblock %}
+
+{% block content %}
+  <form method="POST" action="/admin/login">
+    <div class="session-form">
+
+      <div class="session-form-content">
+        <div class="session-form-header">
+          <h2>Iniciar Sessão</h2>
+        </div>
+
+        <div class="session-form-inputs">
+          <h4>E-mail</h4>
+          <input type="email" name="email" value="{{user.email}}" placeholder="Digite seu email" required>
+        </div>
+
+        <div class="session-form-inputs">
+          <h4>E-mail</h4>
+          <input type="password" name="password" value="{{user.password}}" placeholder="Digite sua senha" required>
+        </div>
+
+        <div class="session-form-bottom">
+          <a href="">Perdeu a senha?</a>
+          <button type="submit">Acessar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+{% endblock %}

@@ -12,44 +12,53 @@
 </p>
 
 ## :speech_balloon: Sobre <a name="about"></a>
+
 > Em Foodfy podemos gerenciar receitas e chefs de cozinha.
 
 <div align="center">
 </div>
 
 ## :warning: Instalação <a name="install"></a>
+
 > Esse projeto usou como SGBD o postgreSQL. Para o funcionamento é preciso realizar algumas configurações:
 
-
 - Criar o banco de dados:
+
 ```sh
 CREATE DATABASE foodfy;
 ```
 
 - Rodar as querys disponíveis em:
+
 ```sh
 src/config/foodfy.sql
 ```
 
 - Configurar os dados do SGBD em:
+
 ```sh
 src/config/db.js
 ```
 
 - Instalar as dependências e iniciar o projeto:
+
 ```sh
 npm install # instala as dependências...
 npm start # roda o projeto...
 ```
 
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>
+
 > Aprender conceitos de programação, entre eles: rotas, banco de dados e lógica de paginação...
 
-*A realizar:*
+_A realizar:_
+
 - Organização
 - Remomear variáveis
 - Show chefs users page
 - Limpar repetição de código
+- Máscara de email
+- Recipes page principal sem receitas cadastradas
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 

@@ -1,6 +1,4 @@
 /* ---------- ALL ---------- */
-
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 * {
   border: 0;
   margin: 0;
@@ -285,8 +283,12 @@ footer p {
 .align-logo {
   width: 940px;
   display: grid;
-  grid-template-columns: 210px 1fr;
+  grid-template-columns: 210px 1fr 1fr;
   align-items: center;
+}
+
+.logout-container {
+  justify-self: end;
 }
 
 .header-admin a {
@@ -296,6 +298,10 @@ footer p {
   color: #999999;
   margin-right: 30px;
   text-transform: uppercase;
+}
+
+.header-admin a:last-child {
+  margin-right: 0;
 }
 
 .header-admin a:hover {
