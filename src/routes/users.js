@@ -2,18 +2,23 @@ const express = require("express");
 const routes = express.Router();
 
 const UserValidator = require("../app/validators/user");
+const SessionValidator = require("../app/validators/session");
 
 const SessionController = require("../app/controllers/user/SessionController");
 const UserController = require("../app/controllers/user/UserController");
 
-routes.get("/login", SessionController.loginForm);
-// routes.post("/login", SessionController.login);
+const { onlyUsers, isLoggedRedirectToProfile } = require("../app/middlewares/session");
+
+// LOGIN - LOGOUT
+routes.get("/login", isLoggedRedirectToProfile, SessionController.loginForm);
+routes.post("/login", SessionValidator.login, SessionController.login);
 routes.post("/logout", SessionController.logout);
 
-// routes.get("/forgot-password", SessionController.forgotForm);
-// routes.get("/password-reset", SessionController.resetForm);
-// routes.post("/forgot-password", SessionController.forgot);
-// routes.post("/password-reset", SessionController.reset);
+// FORGOT - RESET
+routes.get("/forgot-password", SessionController.forgotForm);
+routes.post("/forgot-password", SessionValidator.forgot, SessionController.forgot);
+routes.get("/password-reset", SessionController.resetForm);
+routes.post("/password-reset", SessionValidator.reset, SessionController.reset);
 
 // routes.get("/", UserController.show);
 // routes.put("/", UserController.update);
@@ -27,10 +32,10 @@ routes.post("/logout", SessionController.logout);
 
 // // Rotas que o administrador irá acessar para gerenciar usuários
 // routes.get("/", UserController.list);
-routes.get("/create", UserController.create);
-routes.post("/", UserValidator.post, UserController.post);
-routes.get("/:id/edit", UserValidator.edit, UserController.edit);
-routes.put("/:id", UserValidator.put, UserController.put);
+routes.get("/create", onlyUsers, UserController.create);
+routes.post("/", onlyUsers, UserValidator.post, UserController.post);
+routes.get("/:id/edit", onlyUsers, UserValidator.edit, UserController.edit);
+routes.put("/:id", onlyUsers, UserValidator.put, UserController.put);
 // routes.delete('/admin/users/:id', UserController.delete) // Deletar um usuário
 
 // ---------------------------------------------------------------------------------------------------------------

@@ -1,3 +1,7 @@
+.logout-container-header form {
+  text-align: end;
+}
+
 .logout-container-header form button {
   background: none;
   color: #999999;
@@ -26,28 +30,37 @@
   margin-bottom: 35px;
 }
 
-.session-form-bottom {
+.session-form-footer {
   display: flex;
   margin-top: 15px;
   justify-content: space-between;
   align-items: center;
 }
 
-.session-form-bottom a {
+.session-form-footer-forgot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.session-form-footer a {
   font-size: 16px;
   color: #969696;
   text-decoration: none;
 }
 
-.session-form-bottom a:hover {
+.session-form-footer a:hover {
   font-weight: bold;
+  color: black;
 }
 
-.session-form-bottom button {
+.session-form-footer button,
+.session-form-footer-forgot button {
   width: 140px;
   height: 38px;
 }
 
-.session-form-bottom button:hover {
+.session-form-footer button:hover,
+.session-form-footer-forgot button:hover {
   background: #796ecc;
 }

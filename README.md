@@ -40,11 +40,23 @@ src/config/foodfy.sql
 src/config/db.js
 ```
 
+- Configurar o nodemailer:
+
+```sh
+src/lib/mailer.js
+```
+
 - Instalar as dependências e iniciar o projeto:
 
 ```sh
 npm install # instala as dependências...
 npm start # roda o projeto...
+```
+
+- Acessar a rota principal:
+
+```sh
+localhost:3000
 ```
 
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>
