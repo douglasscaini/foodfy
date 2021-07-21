@@ -8,27 +8,29 @@
   <body>
     {% include "parts/messages.njk" %}
 
-    <div class="wrapper-users">
-      <header class="header-users">
-        <a href="/index"><img src="/assets/logo.png" alt="Logomarca Foodfy"></a>
-        <div class="links">
-          <a href="/about">Sobre</a>
-          <a href="/recipes">Receitas</a>
-          <a href="/chefs">Chefs</a>
-          <a href="/admin/users/login">Login</a>
-        </div>
+      <div class="content-main-users">
+      <div class="wrapper-users">
+        <header class="header-users">
+          <a href="/index"><img src="/assets/logo.png" alt="Logomarca Foodfy"></a>
+          <div class="links">
+            <a href="/about">Sobre</a>
+            <a href="/recipes">Receitas</a>
+            <a href="/chefs">Chefs</a>
+            <a href="/admin/users/login">Login</a>
+          </div>
 
-        <form action="/results" method="GET">
-          <input type="text" name="filter" placeholder="Buscar uma receita...">
-          <button type="submit" class="btn">Buscar</button>
-        </form>
-      </header>
-      {% block content %}{% endblock %}
+          <form action="/results" method="GET">
+            <input type="text" name="filter" placeholder="Buscar uma receita...">
+            <button type="submit" class="btn">Buscar</button>
+          </form>
+        </header>
+        {% block content %}{% endblock %}
+      </div>
+
+      <footer>
+        <p>Todos os direitos reservados - Foodfy, 2021</p>
+      </footer>
     </div>
-
-    <footer>
-      <p>Todos os direitos reservados - Foodfy, 2021</p>
-    </footer>
   </body>
 </html>
 <script src="/scripts/users.js"></script>

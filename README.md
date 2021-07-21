@@ -67,7 +67,6 @@ _A realizar:_
 
 - Organização
 - Remomear variáveis
-- Show chefs users page
 - Limpar repetição de código
 - Máscara de email
 - Recipes page principal sem receitas cadastradas

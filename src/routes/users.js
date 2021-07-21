@@ -20,10 +20,6 @@ routes.post("/forgot-password", SessionValidator.forgot, SessionController.forgo
 routes.get("/password-reset", SessionController.resetForm);
 routes.post("/password-reset", SessionValidator.reset, SessionController.reset);
 
-// routes.get("/", UserController.show);
-// routes.put("/", UserController.update);
-// routes.delete("/", UserController.delete);
-
 // ---------------------------------------------------------------------------------------------------------------
 
 // // Rotas de perfil de um usuário logado

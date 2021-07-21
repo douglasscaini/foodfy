@@ -26,14 +26,14 @@ module.exports = {
 
       let recipesList = await Promise.all(recipesPromise);
 
-      return res.render("users/index", { recipes: recipesList.slice(0, 6) });
+      return res.render("main/index.njk", { recipes: recipesList.slice(0, 6) });
     } catch (error) {
       console.error(`Erro na exibição principal! ${error}`);
     }
   },
 
   async about(req, res) {
-    res.render("users/about");
+    res.render("main/about.njk");
   },
 
   recipes(req, res) {
@@ -50,7 +50,7 @@ module.exports = {
         offset,
         async callback(recipes) {
           if (recipes[0] == undefined) {
-            res.send("Ao menos uma receita deve ser cadastrada antes da visualização!");
+            return res.render("main/recipes.njk");
           } else {
             const pagination = {
               total: Math.ceil(recipes[0].total / limit) || 0,
@@ -76,7 +76,7 @@ module.exports = {
 
             let recipesList = await Promise.all(recipesPromise);
 
-            return res.render("users/recipes", { recipes: recipesList, pagination });
+            return res.render("main/recipes.njk", { recipes: recipesList, pagination });
           }
         },
       };
@@ -100,7 +100,7 @@ module.exports = {
         src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`,
       }));
 
-      return res.render("users/show", { recipe, files: filesRecipe });
+      return res.render("main/show.njk", { recipe, files: filesRecipe });
     } catch (error) {
       console.error(`Erro na exibição da receita dos users! ${error}`);
     }
@@ -129,7 +129,7 @@ module.exports = {
 
       let chefsList = await Promise.all(chefsPromise);
 
-      return res.render("users/chefs", { chefs: chefsList });
+      return res.render("main/chefs.njk", { chefs: chefsList });
     } catch (error) {
       console.error(`Erro na exibição das receitas dos users! ${error}`);
     }
@@ -159,7 +159,7 @@ module.exports = {
       let recipesList = await Promise.all(recipesPromise);
 
       const filter = req.query.filter;
-      return res.render("users/results", { recipes: recipesList, filter });
+      return res.render("main/results.njk", { recipes: recipesList, filter });
     } catch (error) {
       console.error(`Erro na exibição dos resultados das pesquisas! ${error}`);
     }

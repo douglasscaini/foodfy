@@ -1,19 +1,15 @@
 {% extends 'layouts/users.njk' %}
 
 {% block head %}
-  <title>Foodfy - Buscando por "{{filter}}"...</title>
-{% endblock %}
-
-{% block filter %}
-  <form action="/results" method="GET">
-    <input type="text" name="filter" placeholder="Buscar uma receita...">
-    <button type="submit" class="btn">Buscar</button>
-  </form>
+  <title>Foodfy - Receitas</title>
 {% endblock %}
 
 {% block content %}
-  <main>
-    <h2>Buscando por "{{filter}}"...</h2>
+  {% if not chefs.length %}
+    <div class="content-not-found">
+      <h2>Nenhum chefe cadastrado no momento...</h2>  
+    </div>   
+  {% else %}
     <div class="cards">
       {% for recipe in recipes %}
         <div class="card">
@@ -25,5 +21,7 @@
         </div>
       {% endfor %}
     </div>
-  </main>
+  {% endif %}
+
+  <div class="pagination" data-page={{pagination.page}} data-total={{pagination.total}}></div>
 {% endblock %}
