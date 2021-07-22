@@ -5,7 +5,7 @@ module.exports = {
     try {
       const { user } = req;
 
-      res.render("user/profile.njk", { user });
+      res.render("admin/users/profile.njk", { user });
     } catch (error) {
       console.error(error);
     }
@@ -19,7 +19,7 @@ module.exports = {
 
       await User.update(user.id, { name, email });
 
-      return res.render("user/profile.njk", {
+      return res.render("admin/users/profile.njk", {
         user: req.body,
         success: "Sua conta foi atualizada com sucesso!",
       });

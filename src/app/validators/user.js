@@ -7,7 +7,7 @@ async function post(req, res, next) {
     const user = await User.findOne({ where: { email } });
 
     if (user) {
-      return res.render("user/create.njk", {
+      return res.render("admin/users/create.njk", {
         user: req.body,
         error: "Usuário já cadastrado!",
       });
@@ -26,7 +26,7 @@ async function edit(req, res, next) {
     const user = await User.findOne({ where: { id } });
 
     if (!user) {
-      return res.render("user/create.njk", {
+      return res.render("admin/users/create.njk", {
         error: "Usuário não encontrado!",
       });
     }
@@ -49,7 +49,7 @@ async function put(req, res, next) {
       const checkRegisteredEmails = await User.findOne({ where: { email } });
 
       if (checkRegisteredEmails) {
-        return res.render("user/edit.njk", {
+        return res.render("admin/users/edit.njk", {
           user: req.body,
           error: "Este email já está cadastrado!",
         });

@@ -8,7 +8,7 @@ const mailer = require("../../lib/mailer");
 module.exports = {
   loginForm(req, res) {
     try {
-      return res.render("session/login.njk");
+      return res.render("admin/session/login.njk");
     } catch (error) {
       console.error(error);
     }
@@ -27,7 +27,7 @@ module.exports = {
 
   forgotForm(req, res) {
     try {
-      return res.render("session/forgot-password.njk");
+      return res.render("admin/session/forgot-password.njk");
     } catch (error) {
       console.error(error);
     }
@@ -62,7 +62,7 @@ module.exports = {
         `,
       });
 
-      return res.render("session/forgot-password", {
+      return res.render("admin/session/forgot-password.njk", {
         success: "Sucesso! Verifique seu e-mail!",
       });
     } catch (error) {
@@ -72,7 +72,7 @@ module.exports = {
 
   resetForm(req, res) {
     try {
-      return res.render("session/password-reset.njk", { token: req.query.token });
+      return res.render("admin/session/password-reset.njk", { token: req.query.token });
     } catch (error) {
       console.error(error);
     }
@@ -91,7 +91,7 @@ module.exports = {
         reset_token_expires: "",
       });
 
-      return res.render("session/login.njk", {
+      return res.render("admin/session/login.njk", {
         user: req.body,
         success: "Senha atualizada! Realize o login!",
       });

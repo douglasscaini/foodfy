@@ -15,7 +15,14 @@
   </div>
 
   <form method="POST" action="/admin/users/{{user.id}}?_method=PUT" id="form-put">
-    {% include "user/fields.njk" %}
+    {% include "admin/users/fields.njk" %}
+
+    <div class="is_admin">
+      <div class="checkbox-is-admin">
+        <input id="checkbox" type="checkbox" name="is_admin" value="true" {% if user.is_admin == "true" or user.is_admin == true%} checked {% endif %}>
+        <h4>Administrador</h4>
+      </div>
+    </div>
 
     <input type="hidden" name="id" value="{{user.id}}">
   </form>

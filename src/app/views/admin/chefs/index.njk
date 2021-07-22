@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block content %}
-  <h2>Gerenciar Chefs</h2>
+  <div class="top-content-users">
+    <h2>Gerenciar Chefes</h2>
+    <a href="/admin/chefs/create">Novo</a>
+  </div>
 
   <div class="cards-chefs">
     {% for chef in chefs %}

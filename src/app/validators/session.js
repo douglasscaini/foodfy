@@ -9,7 +9,7 @@ async function login(req, res, next) {
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
-      return res.render("session/login.njk", {
+      return res.render("admin/session/login.njk", {
         user: req.body,
         error: "Usuário não cadastrado!",
       });
@@ -18,7 +18,7 @@ async function login(req, res, next) {
     const passed = await compare(password, user.password);
 
     if (!passed) {
-      return res.render("session/login.njk", {
+      return res.render("admin/session/login.njk", {
         user: req.body,
         error: "Senha incorreta!",
       });
@@ -39,7 +39,7 @@ async function forgot(req, res, next) {
     let user = await User.findOne({ where: { email } });
 
     if (!user) {
-      return res.render("session/forgot-password.njk", {
+      return res.render("admin/session/forgot-password.njk", {
         user: req.body,
         error: "E-mail não cadastrado!",
       });
@@ -60,7 +60,7 @@ async function reset(req, res, next) {
     const user = await User.findOne({ where: { email } });
 
     if (!user) {
-      return res.render("session/password-reset.njk", {
+      return res.render("admin/session/password-reset.njk", {
         user: req.body,
         token,
         error: "Usuário não cadastrado!",
@@ -68,7 +68,7 @@ async function reset(req, res, next) {
     }
 
     if (password != passwordRepeat) {
-      return res.render("session/password-reset.njk", {
+      return res.render("admin/session/password-reset.njk", {
         user: req.body,
         token,
         error: "As senhas não coincidem!",
@@ -76,7 +76,7 @@ async function reset(req, res, next) {
     }
 
     if (token != user.reset_token) {
-      return res.render("session/password-reset.njk", {
+      return res.render("admin/session/password-reset.njk", {
         user: req.body,
         token,
         error: "Token inválido! Solicite novamente!",
@@ -87,7 +87,7 @@ async function reset(req, res, next) {
     now = now.setHours(now.getHours());
 
     if (now > user.reset_token_expires) {
-      return res.render("session/password-reset.njk", {
+      return res.render("admin/session/password-reset.njk", {
         user: req.body,
         token,
         error: "Token expirou! Solicite novamente!",

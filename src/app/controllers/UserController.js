@@ -8,7 +8,7 @@ const mailer = require("../../lib/mailer");
 module.exports = {
   async create(req, res) {
     try {
-      return res.render("user/create.njk");
+      return res.render("admin/users/create.njk");
     } catch (error) {
       console.error(error);
     }
@@ -63,7 +63,7 @@ module.exports = {
     try {
       const { user } = req;
 
-      return res.render("user/edit.njk", { user });
+      return res.render("admin/users/edit.njk", { user });
     } catch (error) {
       console.error(error);
     }
@@ -77,7 +77,7 @@ module.exports = {
 
       await User.update(id, { name, email, is_admin });
 
-      return res.render("user/edit.njk", {
+      return res.render("admin/users/edit.njk", {
         user: req.body,
         success: "Usuário atualizado com sucesso!",
       });
@@ -90,7 +90,7 @@ module.exports = {
     try {
       const users = await User.findAll();
 
-      res.render("user/list.njk", { users });
+      res.render("admin/users/list.njk", { users });
     } catch (error) {
       console.error(error);
     }

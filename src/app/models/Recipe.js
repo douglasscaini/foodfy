@@ -17,15 +17,16 @@ module.exports = {
     return results.rows;
   },
 
-  async create(data) {
+  async create(userId, data) {
     const query = `
                   INSERT INTO recipes
-                  (chef_id, title, ingredients, preparation, information, created_at, updated_at)
-                  VALUES ($1, $2, $3, $4, $5, $6, $7)
+                  (user_id, chef_id, title, ingredients, preparation, information, created_at, updated_at)
+                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
                   RETURNING id
                   `;
 
     const values = [
+      userId,
       data.chef_id,
       data.title,
       data.ingredients,

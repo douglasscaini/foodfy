@@ -55,7 +55,7 @@ module.exports = {
 
       let fileIds = await Promise.all(filePromise);
 
-      let recipeId = await Recipe.create(req.body);
+      let recipeId = await Recipe.create(req.session.userId, req.body);
 
       const recipeFilesPromise = fileIds.map((fileId) =>
         File.createRecipeFiles({

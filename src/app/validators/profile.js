@@ -9,7 +9,7 @@ async function index(req, res, next) {
     const user = await User.findOne({ where: { id } });
 
     if (!user)
-      return res.render("session/login.njk", {
+      return res.render("admin/session/login.njk", {
         error: "Usuário inexistente!",
       });
 
@@ -35,7 +35,7 @@ async function put(req, res, next) {
       const checkRegisteredEmails = await User.findOne({ where: { email } });
 
       if (checkRegisteredEmails) {
-        return res.render("user/profile.njk", {
+        return res.render("admin/users/profile.njk", {
           user: req.body,
           error: "Este email já está cadastrado!",
         });
@@ -45,7 +45,7 @@ async function put(req, res, next) {
     const passed = await compare(password, user.password);
 
     if (!passed) {
-      return res.render("user/profile.njk", {
+      return res.render("admin/users/profile.njk", {
         user: req.body,
         error: "Senha incorreta!",
       });

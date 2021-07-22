@@ -31,7 +31,7 @@ CREATE DATABASE foodfy;
 - Rodar as querys disponíveis em:
 
 ```sh
-src/config/foodfy.sql
+./
 ```
 
 - Configurar os dados do SGBD em:
@@ -69,7 +69,10 @@ _A realizar:_
 - Remomear variáveis
 - Limpar repetição de código
 - Máscara de email
-- Recipes page principal sem receitas cadastradas
+- Novos buttons
+
+- ADMIN - Deletar usuário, chef, receitas e files...
+- ADMIN - Não poderá deletar sua própria conta...
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 

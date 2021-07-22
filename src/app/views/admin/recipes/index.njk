@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block content %}
-  <h2>Gerenciar Receitas</h2>
+  <div class="top-content-users">
+    <h2>Gerenciar Receitas</h2>
+    <a href="/admin/recipes/create">Nova</a>
+  </div>
 
   <div class="cards-admin">
     {% for recipe in recipes %}
