@@ -7,7 +7,7 @@
 {% block content %}
   <form method="POST" action="/admin/users">
 
-    <div class="top-content">
+    <div class="top-content-users">
       <h2>Criar Usuário</h2>
 
       <div class="buttons-container">
@@ -17,5 +17,12 @@
     </div>
 
     {% include "user/fields.njk" %}
+
+    <div class="is_admin">
+      <div class="checkbox-is-admin">
+        <input id="checkbox" type="checkbox" name="is_admin" value="true" {% if user.is_admin == "true" or user.is_admin == true%} checked {% endif %}>
+        <h4>Administrador</h4>
+      </div>
+    </div>
   </form>
 {% endblock %}

@@ -3,6 +3,20 @@ const db = require("../../config/db");
 const { date } = require("../../lib/utils");
 
 module.exports = {
+  async findAll() {
+    try {
+      const query = `
+                    SELECT * FROM users ORDER BY updated_at DESC
+                    `;
+
+      const results = await db.query(query);
+
+      return results.rows;
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
   async findOne(filters) {
     try {
       let query = `

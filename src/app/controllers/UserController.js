@@ -1,9 +1,9 @@
-const User = require("../../models/User");
+const User = require("../models/User");
 
 const crypto = require("crypto");
 const { hash } = require("bcryptjs");
 
-const mailer = require("../../../lib/mailer");
+const mailer = require("../../lib/mailer");
 
 module.exports = {
   async create(req, res) {
@@ -86,7 +86,13 @@ module.exports = {
     }
   },
 
-  list(req, res) {
-    //
+  async list(req, res) {
+    try {
+      const users = await User.findAll();
+
+      res.render("user/list.njk", { users });
+    } catch (error) {
+      console.error(error);
+    }
   },
 };

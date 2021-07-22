@@ -1,9 +1,9 @@
-const User = require("../../models/User");
+const User = require("../models/User");
 
 const crypto = require("crypto");
 const { hash } = require("bcryptjs");
 
-const mailer = require("../../../lib/mailer");
+const mailer = require("../../lib/mailer");
 
 module.exports = {
   loginForm(req, res) {
@@ -17,6 +17,7 @@ module.exports = {
   login(req, res) {
     try {
       req.session.userId = req.user.id;
+      req.session.isAdmin = req.user.is_admin;
 
       return res.redirect("/admin/users/profile");
     } catch (error) {

@@ -1,10 +1,12 @@
 .buttons-container {
   justify-self: end;
+  text-align: center;
 }
 
 .buttons-container .button-users,
 .buttons-container #button-users-cancel,
-.buttons-container #button-users-delete {
+.buttons-container #button-users-delete,
+.top-content-users a {
   width: 140px;
   height: 38px;
   transition: 200ms;
@@ -42,7 +44,7 @@
   justify-content: space-between;
 }
 
-.fields-users .inputs-users input {
+.inputs-users input {
   width: 450px;
   margin-bottom: 30px;
 }
@@ -57,4 +59,56 @@
   width: 15px;
   margin-top: 0;
   margin-right: 8px;
+}
+
+/* --- LIST USER ADMIN --- */
+
+.top-content-users {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.top-content-users a {
+  background: #6558c3;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-content-users a:hover {
+  background: #796ecc;
+}
+
+.cards-users {
+  display: grid;
+  grid-template-columns: 40% 40% 20%;
+}
+
+.card-user-content h4 {
+  font-size: 18px;
+  padding-top: 50px;
+  padding-bottom: 5px;
+}
+
+.card-user-content p {
+  font-size: 14px;
+  color: #777777;
+  padding-bottom: 16px;
+}
+
+.buttons-card-user a {
+  font-size: 14px;
+  color: #6558c3;
+  text-decoration: none;
+  font-weight: bold;
+  padding-right: 16px;
+}
+
+.buttons-card-user button {
+  background: none;
+  font-size: 14px;
+  font-weight: bold;
+  color: #f55a5a;
 }

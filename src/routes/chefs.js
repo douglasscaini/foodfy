@@ -1,7 +1,7 @@
 const express = require("express");
 const routes = express.Router();
 
-const ChefController = require("../app/controllers/admin/ChefController");
+const ChefController = require("../app/controllers/ChefController");
 
 const multer = require("../app/middlewares/multer");
 
