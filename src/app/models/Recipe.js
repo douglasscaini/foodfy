@@ -149,4 +149,14 @@ module.exports = {
       callback(results.rows);
     });
   },
+
+  async recipesUser(user_id) {
+    try {
+      const results = await db.query("SELECT * FROM recipes WHERE user_id = $1", [user_id]);
+
+      return results.rows;
+    } catch (error) {
+      console.error(error);
+    }
+  },
 };

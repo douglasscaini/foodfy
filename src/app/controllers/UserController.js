@@ -1,4 +1,6 @@
 const User = require("../models/User");
+const Recipe = require("../models/Recipe");
+const File = require("../models/File");
 
 const crypto = require("crypto");
 const { hash } = require("bcryptjs");
@@ -80,6 +82,36 @@ module.exports = {
       return res.render("admin/users/edit.njk", {
         user: req.body,
         success: "Usuário atualizado com sucesso!",
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  async delete(req, res) {
+    try {
+      const { id: user_id } = req.body;
+
+      const recipesUser = await Recipe.recipesUser(user_id);
+
+      const recipesFilesPromise = recipesUser.map((recipe) => Recipe.getRecipeFiles(recipe.id));
+      const recipesFiles = await Promise.all(recipesFilesPromise);
+
+      const removeRecipesFilesPromise = recipesFiles.map((files) => {
+        files.map((file) => {
+          File.delete(file.file_id);
+        });
+      });
+
+      await Promise.all(removeRecipesFilesPromise);
+
+      await User.delete(user_id);
+
+      const users = await User.findAll();
+
+      return res.render("admin/users/list.njk", {
+        users,
+        success: "Usuário deletado com sucesso!",
       });
     } catch (error) {
       console.error(error);

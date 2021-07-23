@@ -62,8 +62,25 @@ async function put(req, res, next) {
   }
 }
 
+async function deleteAccount(req, res, next) {
+  const { userId } = req.session;
+  const { id } = req.body;
+
+  const user = await User.findOne({ where: { id } });
+
+  if (userId == id) {
+    return res.render("admin/users/profile", {
+      user,
+      error: "Você não pode deletar a sua própria conta!",
+    });
+  }
+
+  next();
+}
+
 module.exports = {
   post,
   edit,
   put,
+  deleteAccount,
 };

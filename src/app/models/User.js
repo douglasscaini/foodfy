@@ -1,5 +1,9 @@
 const db = require("../../config/db");
 
+const Recipe = require("../models/Recipe");
+
+const fs = require("fs");
+
 const { date } = require("../../lib/utils");
 
 module.exports = {
@@ -86,5 +90,9 @@ module.exports = {
     } catch (error) {
       console.error(error);
     }
+  },
+
+  async delete(id) {
+    await db.query("DELETE FROM users WHERE id = $1", [id]);
   },
 };

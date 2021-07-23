@@ -34,5 +34,5 @@ routes.post("/", onlyUsers, isAdmin, UserValidator.post, UserController.post);
 routes.get("/", onlyUsers, isAdmin, UserController.list);
 routes.get("/:id/edit", onlyUsers, isAdmin, UserValidator.edit, UserController.edit);
 routes.put("/:id", onlyUsers, isAdmin, UserValidator.put, UserController.put);
-// routes.delete('/admin/users/:id', onlyUsers, isAdmin, UserController.delete)
+routes.delete("/:id", onlyUsers, isAdmin, UserValidator.deleteAccount, UserController.delete);
 module.exports = routes;
