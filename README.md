@@ -20,13 +20,13 @@
 > Em sua pequena carreira, pode notar que muito do conhecimento que havia adquirido, bem como, receitas que havia elaborado, tinham se perdido por não ter uma forma segura de armazenar esse conhecimento.
 >
 > Após conversação com um jovem programador, ambos decidiram desenvolver um projeto voltado para o modelo Business to Consumer, envolvendo a construção de parcerias entre chefes de cozinha, de forma a conseguirem armazenar e compartilhar receitas e segredos culinários com mais eficiência.
-
+>
 > **Justificativa do Projeto:**
 >
 > Para esse modelo de negócio, o Sr. Brandalise pretende conseguir formar uma comunidade de colaboradores que sejam dedicados e amantes da arte da culinária, afim de conseguir sempre atingir o próximo nível.
 >
-> Os alimentos trazem consigo memórias de bons momentos, reuniões familiares e suas tradições. O não registro e manutenção do conhecimento em torno desse costume podem acarretar em percas e com isso, gerações futuras nunca terão acesso a uma parte importante da sua origem.
-
+> Os alimentos trazem consigo memórias de bons momentos, reuniões familiares e suas tradições. O não registro e manutenção do conhecimento em torno desse costume podem acarretar percas e com isso, gerações futuras nunca terão acesso a uma parte importante da sua origem.
+>
 > **Premissa:**
 >
 > As receitas ficam ociosas quando escrita no caderninho de receitas. Com a aplicação web proposta, a agilidade e flexibilidade será muito melhor e beneficiará os chefs de cozinha no compartilhamento das mesmas.

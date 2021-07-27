@@ -64,3 +64,10 @@
 .session-form-footer-forgot button:hover {
   background: #796ecc;
 }
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 35px;
+}
