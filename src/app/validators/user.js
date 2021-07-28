@@ -9,7 +9,7 @@ async function post(req, res, next) {
     if (user) {
       return res.render("admin/users/create.njk", {
         user: req.body,
-        error: "Usuário já cadastrado!",
+        error: "Este email já está cadastrado!",
       });
     }
 
@@ -63,19 +63,23 @@ async function put(req, res, next) {
 }
 
 async function deleteAccount(req, res, next) {
-  const { userId } = req.session;
-  const { id } = req.body;
+  try {
+    const { userId } = req.session;
+    const { id } = req.body;
 
-  const user = await User.findOne({ where: { id } });
+    const user = await User.findOne({ where: { id } });
 
-  if (userId == id) {
-    return res.render("admin/users/profile", {
-      user,
-      error: "Você não pode deletar a sua própria conta!",
-    });
+    if (userId == id) {
+      return res.render("admin/users/profile", {
+        user,
+        error: "Você não pode deletar a sua própria conta!",
+      });
+    }
+
+    next();
+  } catch (error) {
+    console.error(error);
   }
-
-  next();
 }
 
 module.exports = {
