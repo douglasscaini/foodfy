@@ -3,6 +3,8 @@ const Chef = require("../models/Chef");
 const File = require("../models/File");
 const FileRecipe = require("../models/FileRecipe");
 
+const { unlinkSync } = require("fs");
+
 module.exports = {
   async index(req, res) {
     try {
@@ -35,11 +37,11 @@ module.exports = {
 
   async create(req, res) {
     try {
-      const chefsOptions = await Chef.chefsSelectOptions();
+      const chefs = await Chef.findAll();
 
-      return res.render("admin/recipes/create", { chefsOptions });
+      return res.render("admin/recipes/create.njk", { chefs });
     } catch (error) {
-      console.error(`Erro na exibição da criação das receitas! ${error}`);
+      console.error(error);
     }
   },
 
@@ -55,7 +57,16 @@ module.exports = {
 
       let fileIds = await Promise.all(filePromise);
 
-      let recipeId = await Recipe.create(req.session.userId, req.body);
+      const { chef_id, title, ingredients, preparation, information } = req.body;
+
+      let recipeId = await Recipe.create({
+        user_id: req.session.userId,
+        chef_id,
+        title,
+        ingredients,
+        preparation,
+        information,
+      });
 
       const recipeFilesPromise = fileIds.map((fileId) =>
         File.createRecipeFiles({
@@ -97,7 +108,7 @@ module.exports = {
 
       if (!recipe) return res.send("Receita não encontrada!");
 
-      const chefsOptions = await Chef.chefsSelectOptions();
+      const chefs = await Chef.findAll();
 
       let filesRecipe = await Recipe.getRecipeFiles(recipe.id);
 
@@ -106,7 +117,7 @@ module.exports = {
         src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`,
       }));
 
-      return res.render("admin/recipes/edit", { recipe, chefsOptions, filesRecipe });
+      return res.render("admin/recipes/edit", { recipe, chefs, filesRecipe });
     } catch (error) {
       console.error(`Erro na exibição da edição da receita! ${error}`);
     }
@@ -127,7 +138,9 @@ module.exports = {
         await Promise.all(newFilesPromise);
       }
 
-      Recipe.update(req.body);
+      const { id, chef_id, title, ingredients, preparation, information } = req.body;
+
+      Recipe.update(id, { chef_id, title, ingredients, preparation, information });
 
       if (req.body.removed_files) {
         const recipeFiles = await Recipe.getRecipeFiles(req.body.id);
@@ -159,6 +172,7 @@ module.exports = {
       let recipeFiles = await Recipe.getRecipeFiles(req.body.id);
 
       recipeFiles = recipeFiles.map(async (file) => {
+        unlinkSync(file.path);
         await FileRecipe.delete(file.file_id);
         await File.delete(file.file_id);
       });

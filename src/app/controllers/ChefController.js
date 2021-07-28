@@ -2,6 +2,8 @@ const Chef = require("../models/Chef");
 const Recipe = require("../models/Recipe");
 const File = require("../models/File");
 
+const { unlinkSync } = require("fs");
+
 module.exports = {
   async index(req, res) {
     try {
@@ -12,14 +14,18 @@ module.exports = {
         src: `${req.protocol}://${req.headers.host}${chef.file.replace("public", "")}`,
       }));
 
-      return res.render("admin/chefs/index", { chefs });
+      return res.render("admin/chefs/index.njk", { chefs });
     } catch (error) {
-      console.error(`Erro na exibição dos chefs! ${error}`);
+      console.error(error);
     }
   },
 
   create(req, res) {
-    return res.render("admin/chefs/create");
+    try {
+      return res.render("admin/chefs/create.njk");
+    } catch (error) {
+      console.error(error);
+    }
   },
 
   async post(req, res) {
@@ -44,7 +50,7 @@ module.exports = {
 
   async show(req, res) {
     try {
-      const chef = await Chef.find(req.params.id);
+      const chef = await Chef.findOne({ where: { id: req.params.id } });
 
       let file = await File.getChefFile(chef.id);
 
@@ -82,7 +88,7 @@ module.exports = {
 
   async edit(req, res) {
     try {
-      const chef = await Chef.find(req.params.id);
+      const chef = await Chef.findOne({ where: { id: req.params.id } });
 
       let file = await File.getChefFile(chef.id);
 
@@ -112,10 +118,9 @@ module.exports = {
         });
       }
 
-      await Chef.update({
+      await Chef.update(req.body.id, {
         name: req.body.name,
         file_id: file_id || req.body.file_id,
-        id: req.body.id,
       });
 
       if (req.body.removed_files) {
@@ -143,6 +148,9 @@ module.exports = {
         let file = await File.getChefFile(req.body.id);
 
         await Chef.delete(req.body.id);
+
+        unlinkSync(file.path);
+
         await File.delete(file.id);
       }
 

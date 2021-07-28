@@ -1,3 +1,6 @@
+-- DROP DATABASE IF EXISTS foodfy;
+-- CREATE DATABASE foodfy;
+
 CREATE TABLE "recipes" (
   "id" SERIAL PRIMARY KEY,
   "user_id" int NOT NULL,
@@ -48,7 +51,16 @@ ALTER TABLE "chefs" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id") ON DEL
 ALTER TABLE "recipe_files" ADD FOREIGN KEY ("recipe_id") REFERENCES "recipes" ("id") ON DELETE CASCADE;
 ALTER TABLE "recipe_files" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id") ON DELETE CASCADE;
 
-CREATE FUNCTION trigger_set_timestamp()
+CREATE FUNCTION trigger_set_timestamp_create()
+RETURNS TRIGGER AS $$
+BEGIN
+	NEW.created_at = NOW();
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION trigger_set_timestamp_update()
 RETURNS TRIGGER AS $$
 BEGIN
 	NEW.updated_at = NOW();
@@ -56,20 +68,35 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER set_timestamp
+CREATE TRIGGER set_timestamp_create
+BEFORE INSERT ON recipes
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp_create();
+
+CREATE TRIGGER set_timestamp_update
 BEFORE UPDATE ON recipes
 FOR EACH ROW
-EXECUTE PROCEDURE trigger_set_timestamp();
+EXECUTE PROCEDURE trigger_set_timestamp_update();
 
-CREATE TRIGGER set_timestamp
+CREATE TRIGGER set_timestamp_create
+BEFORE INSERT ON chefs
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp_create();
+
+CREATE TRIGGER set_timestamp_update
 BEFORE UPDATE ON chefs
 FOR EACH ROW
-EXECUTE PROCEDURE trigger_set_timestamp();
+EXECUTE PROCEDURE trigger_set_timestamp_update();
 
-CREATE TRIGGER set_timestamp
+CREATE TRIGGER set_timestamp_create
+BEFORE INSERT ON users
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp_create();
+
+CREATE TRIGGER set_timestamp_update
 BEFORE UPDATE ON users
 FOR EACH ROW
-EXECUTE PROCEDURE trigger_set_timestamp();
+EXECUTE PROCEDURE trigger_set_timestamp_update();
 
 CREATE TABLE "session" (
   "sid" varchar NOT NULL COLLATE "default",

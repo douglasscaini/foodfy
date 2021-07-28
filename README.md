@@ -31,7 +31,7 @@
 >
 > As receitas ficam ociosas quando escritas no caderninho de receitas. Com a aplicação web proposta, a agilidade e flexibilidade será muito melhor e beneficiará os chefs de cozinha no compartilhamento das mesmas.
 >
-> Utilizar-se de meios tecnológicos de forma eficiente é uma boa alternativa de amparo à preservação e compartilhamento das receitas culinárias, as quais são documentos culturais importantes, já que as mesmas, trazem consigo informações importantes de toda uma linhagem.
+> Utilizar-se de meios tecnológicos de forma eficiente é uma boa alternativa de amparo à preservação e compartilhamento das receitas culinárias, as quais são documentos culturais importantes, já que as mesmas trazem consigo informações importantes de toda uma linhagem.
 >
 > Pratos criados por chefes de cozinha sempre vêm carregados de uma forte carga cultural do seu criador. Conseguir compartilhar as receitas para manter os créditos e conhecimento de quem a idealizou é uma ótima forma de se conhecer toda a cultura envolvida na criação daquele prato.
 
@@ -74,7 +74,7 @@ $ http://localhost:3000
 
 > Aprender os principais conceitos para desenvolvimento de uma aplicação completa.
 
-> Validação de e-email;
+> Validação de e-mail;
 > Mensagem de sucesso ao criar usuário;
 > Botão remover na página "list";
 > Mensagens de não autorizado;
@@ -82,6 +82,10 @@ $ http://localhost:3000
 > Mensagem delete "chef" com "recipe";
 > Verificar código delete "user";
 > Retornar msg ao usuário para não parar o sistema;
+> Utilizar base em todos os models;
+> Refatorar README.md com as configs e instalações corretas;
+> Mudar a chamada da função USER em "RecipesController";
+> Qd fazer updated chef, unlinksync da imagem antiga
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 

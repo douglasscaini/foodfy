@@ -1,8 +1,12 @@
 const db = require("../../config/db");
 
-const { date } = require("../../lib/utils");
+const Base = require("./Base");
+
+Base.init({ table: "recipes" });
 
 module.exports = {
+  ...Base,
+
   async all() {
     const query = `
                   SELECT recipes.*, chefs.name AS chef_name
@@ -17,30 +21,6 @@ module.exports = {
     return results.rows;
   },
 
-  async create(userId, data) {
-    const query = `
-                  INSERT INTO recipes
-                  (user_id, chef_id, title, ingredients, preparation, information, created_at, updated_at)
-                  VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-                  RETURNING id
-                  `;
-
-    const values = [
-      userId,
-      data.chef_id,
-      data.title,
-      data.ingredients,
-      data.preparation,
-      data.information,
-      date(Date.now()).iso,
-      date(Date.now()).iso,
-    ];
-
-    let results = await db.query(query, values);
-
-    return results.rows[0].id;
-  },
-
   async find(id) {
     const query = `
                   SELECT recipes.*, chefs.name AS chef_name
@@ -53,33 +33,6 @@ module.exports = {
     let results = await db.query(query, [id]);
 
     return results.rows[0];
-  },
-
-  update(data) {
-    const query = `
-                  UPDATE recipes
-                  SET chef_id=($1), title=($2), ingredients=($3), preparation=($4), information=($5)
-                  WHERE id = $6
-                  `;
-
-    const values = [
-      data.chef_id,
-      data.title,
-      data.ingredients,
-      data.preparation,
-      data.information,
-      data.id,
-    ];
-
-    return db.query(query, values);
-  },
-
-  async delete(id) {
-    const query = `
-                  DELETE FROM recipes WHERE id = $1
-                  `;
-
-    return db.query(query, [id]);
   },
 
   async checkRecipe(id) {
@@ -148,15 +101,5 @@ module.exports = {
 
       callback(results.rows);
     });
-  },
-
-  async recipesUser(user_id) {
-    try {
-      const results = await db.query("SELECT * FROM recipes WHERE user_id = $1", [user_id]);
-
-      return results.rows;
-    } catch (error) {
-      console.error(error);
-    }
   },
 };

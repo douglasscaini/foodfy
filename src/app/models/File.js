@@ -1,21 +1,11 @@
 const db = require("../../config/db");
 
-const fs = require("fs");
+const Base = require("./Base");
+
+Base.init({ table: "files" });
 
 module.exports = {
-  async create(file) {
-    const query = `
-                  INSERT INTO files (name, path)
-                  VALUES ($1, $2)
-                  RETURNING id
-                  `;
-
-    const values = [file.name, file.path];
-
-    let results = await db.query(query, values);
-
-    return results.rows[0].id;
-  },
+  ...Base,
 
   createRecipeFiles({ recipe_id, file_id }) {
     const query = `
@@ -51,15 +41,5 @@ module.exports = {
     let results = await db.query(query, [id]);
 
     return results.rows;
-  },
-
-  async delete(id) {
-    const result = await db.query(`SELECT * FROM files WHERE id = $1`, [id]);
-
-    const file = result.rows[0];
-
-    fs.unlinkSync(file.path);
-
-    return db.query(`DELETE FROM files WHERE id = $1`, [id]);
   },
 };

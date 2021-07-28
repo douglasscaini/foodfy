@@ -33,16 +33,6 @@ const Base = {
     }
   },
 
-  // async find(id) {
-  //   try {
-  //     const results = await find({ where: { id } }, this.table);
-
-  //     return results.rows[0];
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // },
-
   async findOne(filters) {
     try {
       const results = await find(filters, this.table);
@@ -70,7 +60,10 @@ const Base = {
 
       Object.keys(fields).map((key) => {
         keys.push(key);
-        values.push(`'${fields[key]}'`);
+
+        Array.isArray(fields[key])
+          ? values.push(`'{"${fields[key].join('","')}"}'`)
+          : values.push(`'${fields[key]}'`);
       });
 
       const query = `
@@ -93,7 +86,11 @@ const Base = {
       let update = [];
 
       Object.keys(fields).map((key) => {
-        const line = `${key} = '${fields[key]}'`;
+        let line;
+
+        Array.isArray(fields[key])
+          ? (line = `${key} = '{"${fields[key].join('","')}"}'`)
+          : (line = `${key} = '${fields[key]}'`);
 
         update.push(line);
       });

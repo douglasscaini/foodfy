@@ -92,7 +92,7 @@ module.exports = {
     try {
       const { id: user_id } = req.body;
 
-      const recipesUser = await Recipe.recipesUser(user_id);
+      const recipesUser = await Recipe.findOne({ where: { user_id } });
 
       const recipesFilesPromise = recipesUser.map((recipe) => Recipe.getRecipeFiles(recipe.id));
       const recipesFiles = await Promise.all(recipesFilesPromise);
