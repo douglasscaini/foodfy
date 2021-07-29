@@ -69,7 +69,7 @@ module.exports = {
       });
 
       const recipeFilesPromise = fileIds.map((fileId) =>
-        File.createRecipeFiles({
+        FileRecipe.create({
           recipe_id: recipeId,
           file_id: fileId,
         })
@@ -132,7 +132,7 @@ module.exports = {
             path: file.path.replace(/\\/g, "/"),
           });
 
-          await File.createRecipeFiles({ recipe_id: req.body.id, file_id });
+          await FileRecipe.create({ recipe_id: req.body.id, file_id });
         });
 
         await Promise.all(newFilesPromise);

@@ -52,7 +52,7 @@ module.exports = {
     try {
       const chef = await Chef.findOne({ where: { id: req.params.id } });
 
-      let file = await File.getChefFile(chef.id);
+      let file = await Chef.getChefFile(chef.id);
 
       file = {
         ...file,
@@ -90,7 +90,7 @@ module.exports = {
     try {
       const chef = await Chef.findOne({ where: { id: req.params.id } });
 
-      let file = await File.getChefFile(chef.id);
+      let file = await Chef.getChefFile(chef.id);
 
       file = {
         ...file,
@@ -145,7 +145,7 @@ module.exports = {
       if (checkRecipe.length > 0) {
         return res.send("Chefs com receita cadastrada não podem ser deletados!");
       } else {
-        let file = await File.getChefFile(req.body.id);
+        let file = await Chef.getChefFile(req.body.id);
 
         await Chef.delete(req.body.id);
 

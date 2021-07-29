@@ -110,8 +110,10 @@ module.exports = {
     try {
       let chefs = await Chef.findCountRecipes();
 
+      console.log(chefs);
+
       async function getImage(chefId) {
-        let results = await File.getChefFiles(chefId);
+        let results = await Chef.getChefFile(chefId);
 
         results = results.map((file) => ({
           ...file,

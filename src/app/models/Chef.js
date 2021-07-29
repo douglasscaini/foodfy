@@ -47,4 +47,16 @@ module.exports = {
 
     return results.rows;
   },
+
+  async getChefFile(id) {
+    const query = `
+                  SELECT files.* FROM files LEFT JOIN chefs
+                  ON (files.id = chefs.file_id)
+                  WHERE chefs.id = $1
+                  `;
+
+    let results = await db.query(query, [id]);
+
+    return results.rows[0];
+  },
 };
