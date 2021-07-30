@@ -19,6 +19,7 @@
   </form>
 
   <form method="POST" action="/admin/chefs/?_method=DELETE" id="form-delete">
-    <input type="hidden" name="id" value="{{chef.id}}">
+    <input type="hidden" name="chef_id" value="{{chef.id}}">
+    <input type="hidden" name="file_id" value="{{chef.file.id}}">
   </form>
 {% endblock %}

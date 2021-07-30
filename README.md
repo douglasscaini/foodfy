@@ -48,10 +48,7 @@
 ## :warning: Instalação <a name="install"></a>
 
 ```bash
-# Criar o banco de dados:
-$ CREATE DATABASE foodfy;
-
-# Rodar as querys disponíveis no diretório raiz:
+# Executar as "querys" do banco de dados. Elas estão no diretório raiz:
 $ foodfy.sql
 
 # Configurar o banco de dados em:
@@ -65,6 +62,9 @@ $ npm install
 
 # Iniciar o projeto em localhost:
 $ npm start
+
+# Popular a aplicação com as "seeds":
+$ node seeds.js
 
 # Acesse a rota do cliente:
 $ http://localhost:3000
@@ -85,7 +85,15 @@ $ http://localhost:3000
 > Utilizar base em todos os models;
 > Refatorar README.md com as configs e instalações corretas;
 > Mudar a chamada da função USER em "RecipesController";
-> Qd fazer updated chef, unlinksync da imagem antiga
+> Realizar load services de chefs e recipes;
+> Refatorar controllers;
+> Refatorar njk e css;
+> Páginação onde necessário;
+> Verificar search;
+> HTML temporário;
+> Senão tiver a imagem, tratar com o placeholder;
+> Verificar lógica de salvar somente uma imagem para o chef (create, put);
+> Chefes com receita cadastrada não podem ser deletados!
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 

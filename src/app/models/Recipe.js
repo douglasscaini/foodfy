@@ -7,6 +7,20 @@ Base.init({ table: "recipes" });
 module.exports = {
   ...Base,
 
+  // OK
+  async findRecipesChef(chefId) {
+    const query = `
+                  SELECT recipes.* FROM recipes
+                  LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+                  WHERE chefs.id = $1
+                  ORDER BY updated_at DESC
+                  `;
+
+    let results = await db.query(query, [chefId]);
+
+    return results.rows;
+  },
+
   async all() {
     const query = `
                   SELECT recipes.*, chefs.name AS chef_name
@@ -33,16 +47,6 @@ module.exports = {
     let results = await db.query(query, [id]);
 
     return results.rows[0];
-  },
-
-  async checkRecipe(id) {
-    const query = `
-                  SELECT recipes FROM recipes WHERE chef_id=$1
-                  `;
-
-    let results = await db.query(query, [id]);
-
-    return results.rows;
   },
 
   async getRecipeFiles(id) {

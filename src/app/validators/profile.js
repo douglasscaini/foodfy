@@ -27,8 +27,6 @@ async function put(req, res, next) {
 
     const { email, password } = req.body;
 
-    console.log(req.body);
-
     const user = await User.findOne({ where: { id } });
 
     if (email != user.email) {

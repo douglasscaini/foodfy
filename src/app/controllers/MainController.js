@@ -108,32 +108,43 @@ module.exports = {
 
   async chefs(req, res) {
     try {
-      let chefs = await Chef.findCountRecipes();
+      // VER MODEL
+      // let chefs = await Chef.findCountRecipes();
+
+      // async function getImage(id) {
+      //   console.log(id);
+
+      //   const file = await File.findOne({ where: { id } });
+      //   console.log(file);
+      //   // let results = await File.findOne({ where: { id } });
+      //   // console.log(results);
+      //   // const fileChef = results.forEach((file) => ({
+      //   //   ...file,
+      //   //   src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`,
+      //   // }));
+      //   // return fileChef;
+      // }
+
+      // const chefsPromise = chefs.map(async (chef) => {
+      //   chef.file = await getImage(chef.file_id);
+
+      //   return chef;
+      // });
+
+      // let chefsList = await Promise.all(chefsPromise);
+
+      let chefs = await Chef.findAll();
+
+      chefs = chefs.map((chef) => ({
+        ...chef,
+        src: `${req.protocol}://${req.headers.host}${chef.file.replace("public", "")}`,
+      }));
 
       console.log(chefs);
 
-      async function getImage(chefId) {
-        let results = await Chef.getChefFile(chefId);
-
-        results = results.map((file) => ({
-          ...file,
-          src: `${req.protocol}://${req.headers.host}${file.path.replace("public", "")}`,
-        }));
-
-        return results[0];
-      }
-
-      const chefsPromise = chefs.map(async (chef) => {
-        chef.file = await getImage(chef.id);
-
-        return chef;
-      });
-
-      let chefsList = await Promise.all(chefsPromise);
-
-      return res.render("main/chefs.njk", { chefs: chefsList });
+      return res.render("main/chefs.njk", { chefs });
     } catch (error) {
-      console.error(`Erro na exibição das receitas dos users! ${error}`);
+      console.error(error);
     }
   },
 

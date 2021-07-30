@@ -13,9 +13,9 @@ function find(filters, table) {
         query += ` ${field} = '${filters[key][field]}'`;
       });
     });
+  } else {
+    query += `ORDER BY updated_at DESC`;
   }
-
-  query += `ORDER BY updated_at DESC`;
 
   return db.query(query);
 }

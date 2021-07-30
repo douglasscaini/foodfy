@@ -8,6 +8,7 @@ const { unlinkSync } = require("fs");
 module.exports = {
   async index(req, res) {
     try {
+      // Ver Model
       let recipes = await Recipe.all();
 
       async function getImage(recipeId) {
