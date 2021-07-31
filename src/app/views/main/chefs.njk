@@ -14,12 +14,16 @@
       {% for chef in chefs %}
         <div class="card-chef">
           <div class="card-chef-img-content">
-            <img src="{{chef.src}}" alt="Imagem de {{recipe.name}}">
+            <img src="{{chef.file.path}}" alt="Imagem de {{chef.name}}">
           </div>
 
           <div class="card-chef-content">
             <h4>{{chef.name}}</h4>
-            <p>{{chef.total_recipes}} {{"receita" if chef.total_recipes == 1 else "receitas"}}</p>
+              {% if not chef.recipes.length %}
+                <p>0 receitas</p>
+              {% else %}
+                <p>{{chef.recipes.length}} {{"receita" if chef.recipes.length == 1 else "receitas"}}</p>
+              {% endif %}
           </div>
         </div>
       {% endfor %}

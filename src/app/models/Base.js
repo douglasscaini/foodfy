@@ -114,6 +114,23 @@ const Base = {
       console.error(error);
     }
   },
+
+  async paginate({ limit, offset }) {
+    try {
+      const query = `
+                    SELECT ${this.table}.*,
+                    (SELECT count(*) FROM ${this.table}) AS total
+                    FROM ${this.table}
+                    LIMIT ${limit} OFFSET ${offset}
+                    `;
+
+      const results = await db.query(query);
+
+      return results.rows;
+    } catch (error) {
+      console.error(error);
+    }
+  },
 };
 
 module.exports = Base;

@@ -16,8 +16,11 @@
     </div>
 
     <h1>{{chef.name}}</h1>
-    <h5>{{chef.recipes.length}}
-      {{"receita" if recipes.length == 1 else "receitas"}}</h5>
+      {% if not chef.recipes.length %}
+        <h5>0 receitas</h5>
+      {% else %}
+        <h5>{{chef.recipes.length}} {{"receita" if chef.recipes.length == 1 else "receitas"}}</h5>
+      {% endif %}
 
     <div class="title-button">
       <h3>Receitas</h3>

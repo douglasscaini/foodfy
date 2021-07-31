@@ -17,10 +17,10 @@
       </div>
 
       <div class="photos-preview">
-        {% for file in filesRecipe %}
+        {% for file in recipe.files %}
           {% if file %}
             <div class="photo" id="{{file.id}}">
-              <img src="{{file.src}}" alt="{{file.name}}">
+              <img src="{{file.path}}" alt="Imagem de {{recipe.title}}">
               <i
             class="material-icons"
             onclick="PhotosUploud.removeOldPhoto(event)"

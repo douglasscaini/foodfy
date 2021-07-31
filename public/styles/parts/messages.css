@@ -24,6 +24,12 @@
   right: 20px;
   opacity: 1;
   animation: hideMessage 400ms 4s ease-out forwards;
+  text-overflow: clip;
+}
+
+.messages p {
+  padding: 20px;
+  text-align: center;
 }
 
 .messages.error {

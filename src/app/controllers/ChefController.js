@@ -2,14 +2,14 @@ const Chef = require("../models/Chef");
 const Recipe = require("../models/Recipe");
 const File = require("../models/File");
 
-const LoadChefService = require("../services/loadChefService");
+const LoadChefService = require("../services/LoadChefService");
 
 const { unlinkSync } = require("fs");
 
 module.exports = {
   async index(req, res) {
     try {
-      const chefs = await LoadChefService.load("chefs", req.params.id);
+      const chefs = await LoadChefService.load("chefs");
 
       return res.render("admin/chefs/index.njk", { chefs });
     } catch (error) {
@@ -92,14 +92,18 @@ module.exports = {
       const recipesChef = await Recipe.findRecipesChef(chef_id);
 
       if (recipesChef.length > 0) {
-        res.send("Chefes com receita cadastrada não podem ser deletados!");
+        const chef = await LoadChefService.load("chef", { where: { id: chef_id } });
+
+        res.render("admin/chefs/edit.njk", {
+          chef,
+          error: "Chefes com receita cadastrada não podem ser deletados!",
+        });
       } else {
         await Chef.delete(chef_id);
 
         const file = await File.findOne({ where: { id: file_id } });
 
         unlinkSync(file.path);
-
         await File.delete(file_id);
 
         return res.redirect("/admin/chefs");

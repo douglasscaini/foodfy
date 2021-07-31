@@ -23,14 +23,14 @@ async function post(req, res, next) {
 async function put(req, res, next) {
   try {
     if (req.body.removed_files != "" && req.files[0] == undefined) {
-      return res.render("admin/chefs/create.njk", {
+      return res.render("admin/chefs/edit.njk", {
         chef: req.body,
         error: "Por favor, envie 1 foto!",
       });
     }
 
     if (req.files.length > 1) {
-      return res.render("admin/chefs/create.njk", {
+      return res.render("admin/chefs/edit.njk", {
         chef: req.body,
         error: "Somente 1 foto é permitida!",
       });

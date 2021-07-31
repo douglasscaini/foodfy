@@ -93,7 +93,12 @@ $ http://localhost:3000
 > HTML temporário;
 > Senão tiver a imagem, tratar com o placeholder;
 > Verificar lógica de salvar somente uma imagem para o chef (create, put);
-> Chefes com receita cadastrada não podem ser deletados!
+> Input vazio na edição ou criação
+> Rever validators chefs e recipes
+> Corrigir multer images
+> Placeholder images
+> Delete Chefs Controoller
+> Paginate onde necessário
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 

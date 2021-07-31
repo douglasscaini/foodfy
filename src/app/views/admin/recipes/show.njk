@@ -14,13 +14,13 @@
 
     <div class="gallery">
       <div class="highlight">
-        <img src="{{files[0].src}}" alt="Imagem de {{files[0].name}}">
+        <img src="{{recipe.files[0].path}}" alt="Imagem de {{recipe.title}}">
       </div>
       <div class="gallery-preview">
-        {% for image in files %}
+        {% for image in recipe.files %}
           <img
-            src="{{image.src}}"
-            alt="Imagem de {{image.name}}"
+            src="{{image.path}}"
+            alt="Imagem de {{recipe.title}}"
             {% if loop.index0 == 0 %}
               class="active"
             {% endif %}
@@ -31,7 +31,7 @@
     </div>
 
     <h1>{{recipe.title}}</h1>
-    <h5>por {{recipe.chef_name}}</h5>
+    <h5>por {{recipe.chef.name}}</h5>
 
     <div class="title-button">
       <h3>Ingredientes</h3>
