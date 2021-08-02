@@ -1,0 +1,217 @@
+/* --- PAGE --- */
+.content-main-users {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wrapper-users {
+  width: 940px;
+  margin: 35px auto;
+}
+
+/* --- LAYOUT --- */
+.header-users {
+  display: grid;
+  grid-template-columns: 210px 1fr 1fr;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header-users .links {
+  display: flex;
+}
+
+.header-users a {
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: none;
+  color: var(--color-black);
+  margin-right: 30px;
+}
+
+.header-users a:hover {
+  font-weight: bold;
+}
+
+.header-users a.active {
+  font-weight: bold;
+}
+
+.header-users form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.header-users form input {
+  width: 235px;
+  height: 37px;
+  margin: 0;
+}
+
+/* --- INDEX --- */
+.hero {
+  width: 940px;
+  height: 365px;
+  background: var(--color-hero);
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.hero .hero-content h1 {
+  font-size: 32px;
+  line-height: 38px;
+  color: var(--color-black);
+  margin-left: 60px;
+  margin-bottom: 10px;
+}
+
+.hero .hero-content p {
+  font-size: 18px;
+  line-height: 28px;
+  opacity: 0.7;
+  margin-left: 60px;
+  max-width: 315px;
+  color: var(--color-black);
+}
+
+.hero img {
+  justify-self: center;
+  padding-top: 65px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.card a {
+  text-decoration: none;
+  color: var(--color-black);
+}
+
+.cards .card img {
+  width: 300px;
+  height: 140px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.cards .card h4 {
+  font-size: 18px;
+  line-height: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.cards .card p {
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--color-gray-medium);
+}
+
+/* --- ABOUT --- */
+.about-content p {
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--color-gray-hard);
+  margin-bottom: 30px;
+}
+
+/* --- PAGINATE RECIPES --- */
+.pagination {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.pagination a,
+.pagination span {
+  color: var(--color-purple);
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.pagination a:hover {
+  filter: brightness(0.5);
+}
+
+/* --- SHOW RECIPES --- */
+.page-content.chef {
+  margin-top: 50px;
+}
+
+.page-content img {
+  width: 940px;
+  height: 280px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  object-fit: cover;
+}
+
+.page-content h1 {
+  font-size: 36px;
+  line-height: 42px;
+  color: var(--color-black);
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.page-content h5 {
+  font-size: 20px;
+  line-height: 24px;
+  font-size: 20px;
+  color: var(--color-gray-medium);
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.title-button {
+  align-items: center;
+  display: flex;
+}
+
+.page-content h4 {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: bold;
+  color: var(--color-gray-easy);
+  margin-left: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+#text-left {
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--color-gray-hard);
+  white-space: pre-line;
+}
+
+.hide {
+  display: none;
+}
+
+/* --- CHEFS --- */
+.card-chef-content p {
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--color-gray-low);
+  margin-left: 20px;
+}
+
+/* --- SHOW CHEFS --- */
+.not-receipes-chef p {
+  color: var(--color-gray-medium);
+}

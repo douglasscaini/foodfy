@@ -11,8 +11,7 @@ function ShowHide(buttonsShowHide, contentShowHide) {
   buttonsShowHide.forEach((button, index) => {
     button.addEventListener("click", () => {
       contentShowHide[index].classList.toggle("hide");
-      buttonsShowHide[index].innerHTML =
-        buttonsShowHide[index].innerHTML === "MOSTRAR" ? "ESCONDER" : "MOSTRAR";
+      buttonsShowHide[index].innerHTML = buttonsShowHide[index].innerHTML === "MOSTRAR" ? "ESCONDER" : "MOSTRAR";
     });
   });
 }
@@ -96,9 +95,62 @@ const ImageGallery = {
     const { target } = event;
 
     ImageGallery.previews.forEach((preview) => preview.classList.remove("active"));
-
     target.classList.add("active");
-
     ImageGallery.highlight.src = target.src;
+  },
+};
+
+// VALIDATE EMAIL
+const Validate = {
+  apply(input, func) {
+    Validate.clearErrors(input);
+
+    let results = Validate[func](input.value);
+    input.value = results.value;
+
+    if (results.error) {
+      Validate.displayError(input, results.error);
+    }
+  },
+
+  displayError(input) {
+    input.classList.add("email-error");
+    input.focus();
+  },
+
+  clearErrors(input) {
+    input.classList.remove("email-error");
+  },
+
+  isEmail(value) {
+    let error = null;
+    const mailFormat =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+    if (!value.match(mailFormat)) {
+      error = "Email inválido!";
+    }
+
+    return {
+      error,
+      value,
+    };
+  },
+
+  allFields(event) {
+    const items = document.querySelectorAll("input, select");
+
+    for (item of items) {
+      if (item.value == "") {
+        const message = document.createElement("div");
+        message.classList.add("messages");
+        message.classList.add("error");
+        message.style.position = "fixed";
+        message.innerHTML = "Todos os campos são obrigatórios!";
+        document.querySelector("body").append(message);
+
+        event.preventDefault();
+      }
+    }
   },
 };

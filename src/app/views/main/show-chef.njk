@@ -1,16 +1,11 @@
-{% extends 'layouts/admin.njk' %}
+{% extends 'layouts/main.njk' %}
 
 {% block head %}
-  <title>Admin - Chef</title>
+  <title>Foodfy - Chef</title>
 {% endblock %}
 
 {% block content %}
-  <div class="top-content">
-    <h2>Chef: {{chef.name}}</h2>
-    <a href="/admin/chefs/{{chef.id}}/edit" class="button-action-a">Editar Chef</a>
-  </div>
-
-  <div class="page-content">
+  <div class="page-content chef">
     <div class="center-image">
       <img class="chef-image-show" src="{{chef.file.path}}" alt="Imagem de {{chef.name}}">
     </div>
@@ -42,7 +37,7 @@
           <div class="card-admin-content">
             <h4>{{recipe.title}}</h4>
             <p>por {{chef.name}}</p>
-            <a href="/admin/recipes/{{recipe.id}}" class="button-view">Visualizar</a>
+            <a href="/recipes/{{recipe.id}}" class="button-view">Visualizar</a>
           </div>
         </div>
       {% endfor %}

@@ -48,48 +48,37 @@
 ## :warning: Instalação <a name="install"></a>
 
 ```bash
-# Executar as "querys" do banco de dados. Elas estão no diretório raiz:
+# Executar as "querys" do banco de dados:
 $ foodfy.sql
 
-# Configurar o banco de dados em:
+# Configurar o banco de dados:
 $ src/config/db.js
 
-# Configurar o nodemailer em:
+# Configurar o nodemailer:
 $ src/lib/mailer.js
 
-# Instalar todas as dependências necessárias:
+# Instalar as dependências necessárias:
 $ npm install
 
-# Iniciar o projeto em localhost:
+# Iniciar o projeto:
 $ npm start
 
 # Popular a aplicação com as "seeds":
 $ node seeds.js
 
-# Acesse a rota do cliente:
+# Acessar a rota principal:
 $ http://localhost:3000
 ```
 
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>
 
 > Aprender os principais conceitos para desenvolvimento de uma aplicação completa.
-
-> Validação de e-mail;
-> Mensagem de sucesso ao criar usuário;
-> Botão remover na página "list";
+> Mensagem de sucesso ao criar chef e afins;
 > Mensagens de não autorizado;
 > Negrito admin "conta" e "usuários";
-> Mensagem delete "chef" com "recipe";
-> Verificar código delete "user";
 > Retornar msg ao usuário para não parar o sistema;
-> Utilizar base em todos os models;
-> Refatorar README.md com as configs e instalações corretas;
 > Mudar a chamada da função USER em "RecipesController";
-> Realizar load services de chefs e recipes;
-> Refatorar controllers;
-> Refatorar njk e css;
 > Páginação onde necessário;
-> Verificar search;
 > HTML temporário;
 > Senão tiver a imagem, tratar com o placeholder;
 > Verificar lógica de salvar somente uma imagem para o chef (create, put);
@@ -99,6 +88,10 @@ $ http://localhost:3000
 > Placeholder images
 > Delete Chefs Controoller
 > Paginate onde necessário
+> Validate fiels em todos os campos + inputs
+> Lottier Animações em todos os campos
+> Session Midlewers
+> Menu das suas receitas?
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 

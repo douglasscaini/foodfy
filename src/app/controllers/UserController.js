@@ -1,9 +1,11 @@
 const User = require("../models/User");
 const Recipe = require("../models/Recipe");
 const File = require("../models/File");
+const FileRecipe = require("../models/FileRecipe");
 
 const crypto = require("crypto");
 const { hash } = require("bcryptjs");
+const { unlinkSync } = require("fs");
 
 const mailer = require("../../lib/mailer");
 
@@ -55,7 +57,11 @@ module.exports = {
 
       const userId = await User.create({ name, email, password, is_admin });
 
-      return res.redirect(`/admin/users/${userId}/edit`);
+      return res.render(`parts/animations/success.njk`, {
+        message: "Usuário cadastrado com sucesso!",
+        url: `/admin/users/${userId}/edit`,
+        button: "Exibir Usuário",
+      });
     } catch (error) {
       console.error(error);
     }
@@ -79,9 +85,10 @@ module.exports = {
 
       await User.update(id, { name, email, is_admin });
 
-      return res.render("admin/users/edit.njk", {
-        user: req.body,
-        success: "Usuário atualizado com sucesso!",
+      return res.render(`parts/animations/success.njk`, {
+        message: "Usuário atualizado com sucesso!",
+        url: `/admin/users`,
+        button: "Exibir Usuários",
       });
     } catch (error) {
       console.error(error);
@@ -92,26 +99,30 @@ module.exports = {
     try {
       const { id: user_id } = req.body;
 
-      const recipesUser = await Recipe.findOne({ where: { user_id } });
+      const recipesUser = await Recipe.findRecipesUser(user_id);
 
-      const recipesFilesPromise = recipesUser.map((recipe) => Recipe.getRecipeFiles(recipe.id));
-      const recipesFiles = await Promise.all(recipesFilesPromise);
+      if (recipesUser.length > 0) {
+        recipesUser.map(async (recipe) => {
+          let recipesFile = await File.findFilesRecipe(recipe.id);
 
-      const removeRecipesFilesPromise = recipesFiles.map((files) => {
-        files.map((file) => {
-          File.delete(file.file_id);
+          recipesFile.map(async (file) => {
+            const fileRecipe = await FileRecipe.findOne({ where: { file_id: file.id } });
+            await FileRecipe.delete(fileRecipe.id);
+
+            unlinkSync(file.path);
+            await File.delete(file.id);
+          });
+
+          await Recipe.delete(recipe.id);
         });
-      });
-
-      await Promise.all(removeRecipesFilesPromise);
+      }
 
       await User.delete(user_id);
 
-      const users = await User.findAll();
-
-      return res.render("admin/users/list.njk", {
-        users,
-        success: "Usuário deletado com sucesso!",
+      return res.render(`parts/animations/delete.njk`, {
+        message: "Usuário deletado com sucesso!",
+        url: `/admin/users`,
+        button: "Exibir Usuários",
       });
     } catch (error) {
       console.error(error);

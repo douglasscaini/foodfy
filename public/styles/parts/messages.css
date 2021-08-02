@@ -7,7 +7,7 @@
 
 @keyframes hideInputError {
   to {
-    border-color: #dddddd;
+    border-color: var(--color-gray-border);
   }
 }
 
@@ -18,7 +18,7 @@
   position: absolute;
   height: 135px;
   width: 340px;
-  color: white;
+  color: var(--color-white);
   border-radius: 4px;
   top: 20px;
   right: 20px;
@@ -43,4 +43,8 @@
 input.error {
   border-color: #ff3131;
   animation: hideInputError 400ms 4s ease-out forwards;
+}
+
+input.email-error {
+  border-color: #ff3131;
 }

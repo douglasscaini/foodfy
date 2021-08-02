@@ -1,0 +1,38 @@
+.gallery {
+  width: 100%;
+}
+
+.gallery .highlight > img {
+  width: 100%;
+  height: 280px;
+  object-position: 50% 50%;
+  border: 1px solid var(--color-gray-border);
+  margin-bottom: 5px;
+}
+
+.gallery .gallery-preview {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 55px;
+}
+
+.gallery .gallery-preview img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-left: 7px;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.gallery .gallery-preview img:hover,
+.gallery .gallery-preview img.active {
+  opacity: 1;
+}
+
+.content-not-found h2 {
+  margin-top: 50px;
+}

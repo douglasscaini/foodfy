@@ -6,6 +6,6 @@
 
   <div class="inputs-users">
     <h4>E-mail</h4>
-    <input type="email" name="email" value="{{user.email}}" class="{% if error %} error {% endif %}" placeholder="Digite o e-mail" required>
+    <input type="email" name="email" value="{{user.email}}" class="{% if error %} error {% endif %}" placeholder="Digite o e-mail" onblur="Validate.apply(this, 'isEmail')" required>
   </div>
 </div>

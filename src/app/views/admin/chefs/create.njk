@@ -6,12 +6,11 @@
 
 {% block content %}
   <form class="recipe" method="POST" action="/admin/chefs" enctype="multipart/form-data">
-
     <div class="top-content">
       <h2>Criando Chef</h2>
-      <button class="button-default" type="submit">Salvar Chef</button>
+      <button class="button-default" type="submit" onclick="Validate.allFields(event)">Salvar Chef</button>
     </div>
-
+    
     {% include 'admin/chefs/fields.njk' %}
   </form>
 {% endblock %}

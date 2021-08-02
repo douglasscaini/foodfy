@@ -25,7 +25,7 @@ function isAdmin(req, res, next) {
 }
 
 async function recipePermission(req, res, next) {
-  const recipe = await Recipe.find(req.params.id);
+  const recipe = await Recipe.findOne({ where: { id: req.params.id } });
 
   if (req.session.userId != recipe.user_id && !req.session.isAdmin) {
     return res.redirect("/admin/users/profile");

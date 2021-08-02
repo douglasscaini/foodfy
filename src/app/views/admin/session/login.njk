@@ -1,16 +1,10 @@
-<html>
-<head>
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/styles/parts/messages.css">
-  <link rel="stylesheet" href="/styles/session/session.css">
-  <title>Foodfy - Login</title>
-</head>
-<body>
-  {% include "parts/messages.njk" %}
+{% extends 'layouts/main.njk' %}
 
-  <div class="logo-container">
-     <a href="/"><img src="/assets/logo-black.png" alt="Logo Foodfy"></a>
-  </div>
+{% block head %}
+  <title>Foodfy - Login</title>
+{% endblock %}
+
+{% block content %}
   <form method="POST" action="/admin/users/login">
     <div class="session-form">
 
@@ -21,7 +15,7 @@
 
         <div class="session-form-inputs">
           <h4>E-mail</h4>
-          <input type="email" name="email" value="{{user.email}}" class="{% if error %} error {% endif %}" placeholder="Digite seu e-mail" required>
+          <input type="email" name="email" value="{{user.email}}" class="{% if error %} error {% endif %}" placeholder="Digite seu e-mail" onblur="Validate.apply(this, 'isEmail')" required>
         </div>
 
         <div class="session-form-inputs">
@@ -36,5 +30,4 @@
       </div>
     </div>
   </form>
-</body>
-</html>
+{% endblock %}

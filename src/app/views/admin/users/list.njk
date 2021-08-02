@@ -20,8 +20,12 @@
 
         <div class="buttons-card-user">
           <a href="/admin/users/{{user.id}}/edit">Editar</a>
-          <button type="submit">Remover</button>
+          <button form="form-delete" type="submit">Remover</button>
         </div>
+
+        <form method="POST" action="/admin/users/{{user.id}}?_method=DELETE" id="form-delete">
+          <input type="hidden" name="id" value="{{user.id}}">
+        </form>
       </div>
     {% endfor %}
   </div>

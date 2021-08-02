@@ -7,25 +7,27 @@
 {% block content %}
   {% if not chefs.length %}
     <div class="content-not-found">
-      <h2>Nenhum chefe tem receita cadastrada no momento...</h2>  
+      <h2>Nenhum chefe cadastrado no momento...</h2>  
     </div>   
   {% else %}
     <div class="cards-chefs">
       {% for chef in chefs %}
-        <div class="card-chef">
-          <div class="card-chef-img-content">
-            <img src="{{chef.file.path}}" alt="Imagem de {{chef.name}}">
-          </div>
+        <a href="/chefs/{{chef.id}}">
+          <div class="card-chef">
+              <div class="card-chef-img-content">
+                <img src="{{chef.file.path}}" alt="Imagem de {{chef.name}}">
+              </div>
 
-          <div class="card-chef-content">
-            <h4>{{chef.name}}</h4>
-              {% if not chef.recipes.length %}
-                <p>0 receitas</p>
-              {% else %}
-                <p>{{chef.recipes.length}} {{"receita" if chef.recipes.length == 1 else "receitas"}}</p>
-              {% endif %}
+              <div class="card-chef-content">
+                <h4>{{chef.name}}</h4>
+                  {% if not chef.recipes.length %}
+                    <p>0 receitas</p>
+                  {% else %}
+                    <p>{{chef.recipes.length}} {{"receita" if chef.recipes.length == 1 else "receitas"}}</p>
+                  {% endif %}
+              </div>
           </div>
-        </div>
+        </a>
       {% endfor %}
     </div>
   {% endif %}

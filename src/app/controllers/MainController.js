@@ -37,6 +37,10 @@ module.exports = {
 
       recipes = await Promise.all(recipesPromise);
 
+      if (recipes == "") {
+        return res.render("main/recipes.njk", { recipes });
+      }
+
       const pagination = {
         total: Math.ceil(recipes[0].total / limit) || 0,
         page,
@@ -48,11 +52,11 @@ module.exports = {
     }
   },
 
-  async show(req, res) {
+  async showRecipe(req, res) {
     try {
       const recipe = await LoadRecipeService.load("recipe", { where: { id: req.params.id } });
 
-      return res.render("main/show.njk", { recipe });
+      return res.render("main/show-recipe.njk", { recipe });
     } catch (error) {
       console.error(error);
     }
@@ -63,6 +67,16 @@ module.exports = {
       const chefs = await LoadChefService.load("chefs");
 
       return res.render("main/chefs.njk", { chefs });
+    } catch (error) {
+      console.error(error);
+    }
+  },
+
+  async showChef(req, res) {
+    try {
+      const chef = await LoadChefService.load("chef", { where: { id: req.params.id } });
+
+      return res.render("main/show-chef.njk", { chef });
     } catch (error) {
       console.error(error);
     }

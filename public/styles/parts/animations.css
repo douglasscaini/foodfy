@@ -1,0 +1,25 @@
+.message-lottie {
+  text-align: center;
+}
+
+.message-lottie h2 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.message-lottie a {
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  background: #6957c2;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.message-lottie a:hover {
+  background: var(--color-purple-hover);
+}
+
+.image-lottie {
+  height: 200px;
+}

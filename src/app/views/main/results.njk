@@ -1,12 +1,17 @@
 {% extends 'layouts/main.njk' %}
 
 {% block head %}
-  <title>Foodfy - Buscando por "{{filter}}"...</title>
+  <title>Foodfy - Resultados</title>
 {% endblock %}
 
 {% block content %}
   <main>
-    <h2>Buscando por: "{{filter}}"...</h2>
+    {% if not filter %}
+      <h2>Buscando por: "todas as receitas"...</h2>
+    {% else %}
+      <h2>Buscando por: "{{filter}}"...</h2>
+    {% endif %}
+    
     <div class="cards">
       {% for recipe in recipes %}
         <div class="card">
@@ -19,4 +24,6 @@
       {% endfor %}
     </div>
   </main>
+  
+  <div class="pagination" data-page={{pagination.page}} data-total={{pagination.total}}></div>
 {% endblock %}

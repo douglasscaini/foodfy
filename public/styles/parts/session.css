@@ -4,14 +4,14 @@
 
 .logout-container-header form button {
   background: none;
-  color: #999999;
+  color: var(--color-gray-easy);
   font-size: 15px;
   cursor: pointer;
   text-transform: uppercase;
 }
 
 .logout-container-header form button:hover {
-  color: white;
+  color: var(--color-white);
 }
 
 .session-form {
@@ -45,13 +45,13 @@
 
 .session-form-footer a {
   font-size: 16px;
-  color: #969696;
+  color: var(--color-gray-easy);
   text-decoration: none;
 }
 
 .session-form-footer a:hover {
   font-weight: bold;
-  color: black;
+  color: var(--color-purple-hover);
 }
 
 .session-form-footer button,
@@ -62,7 +62,7 @@
 
 .session-form-footer button:hover,
 .session-form-footer-forgot button:hover {
-  background: #796ecc;
+  background: var(--color-purple-hover);
 }
 
 .logo-container {

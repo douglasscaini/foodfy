@@ -15,11 +15,11 @@
   cursor: pointer;
   margin-left: 10px;
   border-radius: 4px;
-  color: white;
+  color: var(--color-white);
 }
 
 .buttons-container .button-users:hover {
-  background: #796ecc;
+  background: var(--color-purple-hover);
 }
 
 .buttons-container #button-users-cancel {
@@ -46,12 +46,16 @@
 
 .inputs-users input {
   width: 450px;
-  margin-bottom: 30px;
+}
+
+.inputs-users h4 {
+  margin-top: 30px;
 }
 
 .is_admin .checkbox-is-admin {
   display: flex;
   align-items: center;
+  padding-top: 30px;
 }
 
 .is_admin .checkbox-is-admin #checkbox {
@@ -70,7 +74,7 @@
 }
 
 .top-content-users a {
-  background: #6558c3;
+  background: var(--color-purple);
   text-decoration: none;
   display: flex;
   justify-content: center;
@@ -78,7 +82,7 @@
 }
 
 .top-content-users a:hover {
-  background: #796ecc;
+  background: var(--color-purple-hover);
 }
 
 .cards-users {
@@ -94,13 +98,13 @@
 
 .card-user-content p {
   font-size: 14px;
-  color: #777777;
+  color: var(--color-gray-medium);
   padding-bottom: 16px;
 }
 
 .buttons-card-user a {
   font-size: 14px;
-  color: #6558c3;
+  color: var(--color-purple);
   text-decoration: none;
   font-weight: bold;
   padding-right: 16px;

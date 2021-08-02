@@ -7,7 +7,7 @@ if (formDelete) {
 
 function itemFormDelete(formDelete) {
   formDelete.addEventListener("submit", function (event) {
-    const confirmation = confirm("Deseja Deletar?");
+    const confirmation = confirm("Deseja realmente deletar?");
 
     if (!confirmation) {
       event.preventDefault();
@@ -46,7 +46,6 @@ function addIngredient() {
   const fieldContainer = document.querySelectorAll(".ingredient");
 
   const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true);
-
   if (newField.children[0].value == "") return false;
 
   newField.children[0].value = "";
@@ -58,7 +57,6 @@ function addPreparation() {
   const fieldContainer = document.querySelectorAll(".preparation");
 
   const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true);
-
   if (newField.children[0].value == "") return false;
 
   newField.children[0].value = "";
@@ -85,11 +83,8 @@ const PhotosUploud = {
 
       reader.onload = () => {
         const image = new Image();
-
         image.src = String(reader.result);
-
         const div = PhotosUploud.getContainer(image);
-
         PhotosUploud.preview.appendChild(div);
       };
 
@@ -132,7 +127,6 @@ const PhotosUploud = {
 
   getAllFiles() {
     const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer();
-
     PhotosUploud.files.forEach((file) => dataTransfer.items.add(file));
 
     return dataTransfer.files;
@@ -140,13 +134,9 @@ const PhotosUploud = {
 
   getContainer(image) {
     const div = document.createElement("div");
-
     div.classList.add("photo");
-
     div.onclick = PhotosUploud.removePhoto;
-
     div.appendChild(image);
-
     div.appendChild(PhotosUploud.getRemoveButton());
 
     return div;
@@ -154,7 +144,6 @@ const PhotosUploud = {
 
   getRemoveButton() {
     const button = document.createElement("i");
-
     button.classList.add("material-icons");
     button.innerHTML = "close";
 
@@ -165,10 +154,8 @@ const PhotosUploud = {
     const photoDiv = event.target.parentNode;
     const photosArray = Array.from(PhotosUploud.preview.children);
     const index = photosArray.indexOf(photoDiv);
-
     PhotosUploud.files.splice(index, 1);
     PhotosUploud.input.files = PhotosUploud.getAllFiles();
-
     photoDiv.remove();
   },
 
@@ -195,9 +182,62 @@ const ImageGallery = {
     const { target } = event;
 
     ImageGallery.previews.forEach((preview) => preview.classList.remove("active"));
-
     target.classList.add("active");
-
     ImageGallery.highlight.src = target.src;
+  },
+};
+
+// VALIDATE EMAIL
+const Validate = {
+  apply(input, func) {
+    Validate.clearErrors(input);
+
+    let results = Validate[func](input.value);
+    input.value = results.value;
+
+    if (results.error) {
+      Validate.displayError(input, results.error);
+    }
+  },
+
+  displayError(input) {
+    input.classList.add("email-error");
+    input.focus();
+  },
+
+  clearErrors(input) {
+    input.classList.remove("email-error");
+  },
+
+  isEmail(value) {
+    let error = null;
+    const mailFormat =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+    if (!value.match(mailFormat)) {
+      error = "Email inválido!";
+    }
+
+    return {
+      error,
+      value,
+    };
+  },
+
+  allFields(event) {
+    const items = document.querySelectorAll("input, select");
+
+    for (item of items) {
+      if (item.value == "") {
+        const message = document.createElement("div");
+        message.classList.add("messages");
+        message.classList.add("error");
+        message.style.position = "fixed";
+        message.innerHTML = "Todos os campos são obrigatórios!";
+        document.querySelector("body").append(message);
+
+        event.preventDefault();
+      }
+    }
   },
 };
