@@ -18,14 +18,13 @@
           <p>{{user.email}}</p>
         </div>
 
-        <div class="buttons-card-user">
+        <div class="buttons-card-user" id="user-delete-form">
           <a href="/admin/users/{{user.id}}/edit">Editar</a>
-          <button form="form-delete" type="submit">Remover</button>
+          <form class="form-delete" action="/admin/users/{{user.id}}?_method=DELETE" method="POST">
+            <input type="hidden" name="id" value="{{user.id}}">
+            <button type="submit">Remover</button>
+          </form>
         </div>
-
-        <form method="POST" action="/admin/users/{{user.id}}?_method=DELETE" id="form-delete">
-          <input type="hidden" name="id" value="{{user.id}}">
-        </form>
       </div>
     {% endfor %}
   </div>

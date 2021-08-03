@@ -19,6 +19,57 @@
   justify-self: end;
 }
 
+.users-li {
+  display: inline;
+  position: relative;
+  cursor: pointer;
+}
+
+.users-li .users-ul {
+  position: absolute;
+  top: 12px;
+  left: 0px;
+  margin-top: 10px;
+  background: black;
+  transition: all 200ms;
+  opacity: 0;
+  visibility: hidden;
+  width: 180px;
+}
+
+.users-li:hover .users-ul {
+  top: 12px;
+  opacity: 1;
+  visibility: initial;
+  border-radius: 4px;
+}
+
+.users-li:hover .users-ul a {
+  color: var(--color-gray-easy);
+}
+
+.users-li .users-ul a {
+  cursor: pointer;
+  color: var(--color-gray-easy);
+  display: block;
+  margin: 10px;
+  border-radius: 4px;
+  gap: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.users-li .users-ul a:hover {
+  color: var(--color-white);
+  border-radius: 4px;
+}
+
+.links {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
 .header-admin a {
   font-size: 15px;
   line-height: 18px;
@@ -26,10 +77,6 @@
   color: var(--color-gray-easy);
   margin-right: 30px;
   text-transform: uppercase;
-}
-
-.header-admin a:last-child {
-  margin-right: 0;
 }
 
 .header-admin a:hover {
@@ -49,6 +96,10 @@
 .cards-admin {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+#cards-admin-top {
+  padding-top: 30px;
 }
 
 .card-admin {
@@ -167,6 +218,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 30px;
+}
+
+#cards-chefs-top {
+  padding-top: 30px;
 }
 
 .card-chef {

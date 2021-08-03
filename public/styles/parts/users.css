@@ -92,7 +92,7 @@
 
 .card-user-content h4 {
   font-size: 18px;
-  padding-top: 50px;
+  padding-top: 30px;
   padding-bottom: 5px;
 }
 
@@ -115,4 +115,9 @@
   font-size: 14px;
   font-weight: bold;
   color: #f55a5a;
+}
+
+#user-delete-form {
+  display: flex;
+  align-items: center;
 }

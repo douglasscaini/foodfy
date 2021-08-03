@@ -8,14 +8,22 @@
   <body>
     {% include "parts/messages.njk" %}
 
-    <header class="header-admin">
+    <header class="header-admin menu-active">
       <div class="align-logo">
         <a href="/admin/recipes"><img src="/assets/logo-write.png" alt="Logomarca Foodfy"></a>
         <div class="links">
           <a href="/admin/recipes">Receitas</a>
           <a href="/admin/chefs">Chefs</a>
           <a href="/admin/users">Usuários</a>
-          <a href="/admin/users/profile">Conta</a>
+
+          <li class="users-li">
+            <i class="material-icons">account_circle</i>
+            <ul class="users-ul">
+              <a href="/admin/users/profile"><i class="material-icons">manage_accounts</i>Minha conta</a>
+              <a href="/admin/recipes/user-recipes"><i class="material-icons">menu_book</i>Minhas receitas</a>
+            </ul>
+          </li>
+          
         </div>
         <div class="logout-container-header">
           <form action="/admin/users/logout" method="POST">
@@ -31,4 +39,5 @@
   </body>
 </html>
 <script src="/scripts/admin.js"></script>
+<script src="/scripts/global.js"></script>
 {% block lottie %}{% endblock %}

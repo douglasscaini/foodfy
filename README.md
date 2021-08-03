@@ -38,10 +38,18 @@
 <br />
 <table>
   <tr>
-    <td colspan="1">Visualização</td>
+    <td colspan="1">Página Principal</td>
   </tr>
   <tr>
-    <td><img src="#" width=1000px /></td></td>
+    <td><img src="./.github/main.gif" width=1000px /></td></td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <td colspan="1">Área Administrativa</td>
+  </tr>
+  <tr>
+    <td><img src="./.github/main.gif" width=1000px /></td></td>
   </tr>
 </table>
 
@@ -66,37 +74,22 @@ $ npm start
 # Popular a aplicação com as "seeds":
 $ node seeds.js
 
-# Realizar o login com algum usuário:
-$ A senha padrão é "123"
-
 # Acessar a rota principal:
 $ http://localhost:3000
+
+# A senha padrão para os usuários é:
+$ 123
 ```
 
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>
 
 > Aprender os principais conceitos para desenvolvimento de uma aplicação completa.
 
-> Msg lottie
-> Mensagens de não autorizado;
-> Negrito admin "conta" e "usuários";
-> Retornar msg ao usuário para não parar o sistema;
-> Mudar a chamada da função USER em "RecipesController";
-> Páginação onde necessário;
-> HTML temporário;
+> Input vazio na edição ou criação
+> Placeholder-recipe
 > Senão tiver a imagem, tratar com o placeholder;
 > Verificar lógica de salvar somente uma imagem para o chef (create, put);
-> Input vazio na edição ou criação
-> Rever validators chefs e recipes
 > Corrigir multer images
-> Placeholder images
-> Delete Chefs Controoller
-> Paginate onde necessário
-> Validate fiels em todos os campos + inputs
-> Lottier Animações em todos os campos
-> Session Midlewers
-> Menu das suas receitas?
-> Scripts duplicados
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 

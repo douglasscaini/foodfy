@@ -121,6 +121,7 @@ const Base = {
                     SELECT ${this.table}.*,
                     (SELECT count(*) FROM ${this.table}) AS total
                     FROM ${this.table}
+                    ORDER BY updated_at DESC
                     LIMIT ${limit} OFFSET ${offset}
                     `;
 

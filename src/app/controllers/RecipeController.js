@@ -68,7 +68,11 @@ module.exports = {
 
       await Promise.all(filesPromise);
 
-      return res.redirect(`/admin/recipes/${recipe_id}`);
+      return res.render(`parts/animations/success.njk`, {
+        message: "Receita cadastrada com sucesso!",
+        url: `/admin/recipes/${recipe_id}`,
+        button: "Exibir Receita",
+      });
     } catch (error) {
       console.error(error);
     }
@@ -129,7 +133,11 @@ module.exports = {
 
       Recipe.update(id, { chef_id, title, ingredients, preparation, information });
 
-      return res.redirect(`/admin/recipes/${id}`);
+      return res.render(`parts/animations/success.njk`, {
+        message: "Receita atualizada com sucesso!",
+        url: `/admin/recipes/user-recipes`,
+        button: "Minhas Receitas",
+      });
     } catch (error) {
       console.error(error);
     }
@@ -149,9 +157,29 @@ module.exports = {
 
       await Recipe.delete(req.body.id);
 
-      return res.redirect("/admin/recipes");
+      return res.render(`parts/animations/delete.njk`, {
+        message: "Receita deletada com sucesso!",
+        url: `/admin/recipes/user-recipes`,
+        button: "Minhas Receitas",
+      });
     } catch (error) {
       console.error(error);
+    }
+  },
+
+  async userRecipes(req, res) {
+    try {
+      const { userId } = req.session;
+
+      const recipesUser = await Recipe.findRecipesUser(userId);
+
+      const recipesPromise = recipesUser.map(LoadRecipeService.format);
+
+      recipes = await Promise.all(recipesPromise);
+
+      return res.render("admin/recipes/index.njk", { recipes });
+    } catch (error) {
+      console.log(error);
     }
   },
 };

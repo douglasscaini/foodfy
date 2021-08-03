@@ -102,19 +102,25 @@ module.exports = {
       const recipesUser = await Recipe.findRecipesUser(user_id);
 
       if (recipesUser.length > 0) {
-        recipesUser.map(async (recipe) => {
+        const deleteRecipePromise = recipesUser.map(async (recipe) => {
           let recipesFile = await File.findFilesRecipe(recipe.id);
 
-          recipesFile.map(async (file) => {
+          const deleteFilesPromise = recipesFile.map(async (file) => {
             const fileRecipe = await FileRecipe.findOne({ where: { file_id: file.id } });
+            console.log(fileRecipe);
+
             await FileRecipe.delete(fileRecipe.id);
 
             unlinkSync(file.path);
             await File.delete(file.id);
           });
 
+          await Promise.all(deleteFilesPromise);
+
           await Recipe.delete(recipe.id);
         });
+
+        await Promise.all(deleteRecipePromise);
       }
 
       await User.delete(user_id);
@@ -134,7 +140,7 @@ module.exports = {
       let { page, limit } = req.query;
 
       page = page || 1;
-      limit = limit || 12;
+      limit = limit || 15;
       let offset = limit * (page - 1);
 
       let users = await User.paginate({ limit, offset });

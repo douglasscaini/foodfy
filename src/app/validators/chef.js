@@ -1,7 +1,3 @@
-const Recipe = require("../models/Recipe");
-
-const LoadChefService = require("../services/LoadChefService");
-
 async function post(req, res, next) {
   try {
     if (req.files.length === 0) {

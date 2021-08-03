@@ -19,9 +19,10 @@ module.exports = {
 
       await User.update(user.id, { name, email });
 
-      return res.render("admin/users/profile.njk", {
-        user: req.body,
-        success: "Sua conta foi atualizada com sucesso!",
+      return res.render(`parts/animations/success.njk`, {
+        message: "Sua conta foi atualizada com sucesso!",
+        url: `/admin/users/profile`,
+        button: "Exibir Conta",
       });
     } catch (error) {
       console.error(error);

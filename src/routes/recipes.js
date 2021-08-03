@@ -9,6 +9,8 @@ const { onlyUsers, recipePermission } = require("../app/middlewares/session");
 
 const multer = require("../app/middlewares/multer");
 
+routes.get("/user-recipes", onlyUsers, RecipeController.userRecipes);
+
 routes.get("/", onlyUsers, RecipeController.index);
 routes.get("/create", onlyUsers, RecipeController.create);
 routes.get("/:id", onlyUsers, RecipeController.show);
