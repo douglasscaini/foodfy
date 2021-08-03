@@ -10,9 +10,28 @@ const { unlinkSync } = require("fs");
 module.exports = {
   async index(req, res) {
     try {
-      const recipes = await LoadRecipeService.load("recipes");
+      let { page, limit } = req.query;
 
-      return res.render("admin/recipes/index.njk", { recipes });
+      page = page || 1;
+      limit = limit || 10;
+      let offset = limit * (page - 1);
+
+      let recipes = await Recipe.paginate({ limit, offset });
+
+      const recipesPromise = recipes.map(LoadRecipeService.format);
+
+      recipes = await Promise.all(recipesPromise);
+
+      if (recipes == "") {
+        return res.render("admin/recipes/index.njk", { recipes });
+      }
+
+      const pagination = {
+        total: Math.ceil(recipes[0].total / limit) || 0,
+        page,
+      };
+
+      return res.render("admin/recipes/index.njk", { recipes, pagination });
     } catch (error) {
       console.error(error);
     }

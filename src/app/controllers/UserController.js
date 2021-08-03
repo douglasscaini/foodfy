@@ -131,9 +131,24 @@ module.exports = {
 
   async list(req, res) {
     try {
-      const users = await User.findAll();
+      let { page, limit } = req.query;
 
-      res.render("admin/users/list.njk", { users });
+      page = page || 1;
+      limit = limit || 12;
+      let offset = limit * (page - 1);
+
+      let users = await User.paginate({ limit, offset });
+
+      if (users == "") {
+        return res.render("admin/users/list.njk", { users });
+      }
+
+      const pagination = {
+        total: Math.ceil(users[0].total / limit) || 0,
+        page,
+      };
+
+      return res.render("admin/users/list.njk", { users, pagination });
     } catch (error) {
       console.error(error);
     }

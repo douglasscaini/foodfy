@@ -33,7 +33,11 @@ module.exports = {
       const { name } = req.body;
       const chefId = await Chef.create({ file_id: fileId, name });
 
-      return res.redirect(`/admin/chefs/${chefId}`);
+      return res.render(`parts/animations/success.njk`, {
+        message: "Chef cadastrado com sucesso!",
+        url: `/admin/chefs/${chefId}/edit`,
+        button: "Exibir Chef",
+      });
     } catch (error) {
       console.error(error);
     }
@@ -79,7 +83,11 @@ module.exports = {
         await File.delete(removedFileId);
       }
 
-      return res.redirect(`/admin/chefs/${id}`);
+      return res.render(`parts/animations/success.njk`, {
+        message: "Chef atualizado com sucesso!",
+        url: `/admin/chefs`,
+        button: "Exibir Chefs",
+      });
     } catch (error) {
       console.error(error);
     }
@@ -106,7 +114,11 @@ module.exports = {
         unlinkSync(file.path);
         await File.delete(file_id);
 
-        return res.redirect("/admin/chefs");
+        return res.render(`parts/animations/delete.njk`, {
+          message: "Chef deletado com sucesso!",
+          url: `/admin/chefs`,
+          button: "Exibir Chefs",
+        });
       }
     } catch (error) {
       console.error(error);

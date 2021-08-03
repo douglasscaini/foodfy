@@ -66,6 +66,9 @@ $ npm start
 # Popular a aplicação com as "seeds":
 $ node seeds.js
 
+# Realizar o login com algum usuário:
+$ A senha padrão é "123"
+
 # Acessar a rota principal:
 $ http://localhost:3000
 ```
@@ -73,7 +76,8 @@ $ http://localhost:3000
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>
 
 > Aprender os principais conceitos para desenvolvimento de uma aplicação completa.
-> Mensagem de sucesso ao criar chef e afins;
+
+> Msg lottie
 > Mensagens de não autorizado;
 > Negrito admin "conta" e "usuários";
 > Retornar msg ao usuário para não parar o sistema;
@@ -92,6 +96,7 @@ $ http://localhost:3000
 > Lottier Animações em todos os campos
 > Session Midlewers
 > Menu das suas receitas?
+> Scripts duplicados
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 

@@ -18,7 +18,11 @@ function isLoggedRedirectToProfile(req, res, next) {
 
 function isAdmin(req, res, next) {
   if (!req.session.isAdmin) {
-    return res.redirect("/admin/users/profile");
+    return res.render(`parts/animations/access.njk`, {
+      message: "Acesso negado! Você precisa ser um administrador!",
+      url: `/admin/recipes`,
+      button: "Minhas Receitas",
+    });
   }
 
   next();
@@ -28,7 +32,11 @@ async function recipePermission(req, res, next) {
   const recipe = await Recipe.findOne({ where: { id: req.params.id } });
 
   if (req.session.userId != recipe.user_id && !req.session.isAdmin) {
-    return res.redirect("/admin/users/profile");
+    return res.render(`parts/animations/access.njk`, {
+      message: "Acesso negado! Você consegue editar somente as suas receitas!",
+      url: `/admin/recipes`,
+      button: "Minhas Receitas",
+    });
   }
 
   next();
