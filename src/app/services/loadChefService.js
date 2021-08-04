@@ -18,7 +18,7 @@ async function format(chef) {
 
   if (recipesChef.length > 0) {
     const recipesChefFilesPromise = recipesChef.map(async (recipe) => {
-      const fileRecipe = await FileRecipe.findOne({ where: { id: recipe.id } });
+      const fileRecipe = await FileRecipe.findOne({ where: { recipe_id: recipe.id } });
 
       if (!fileRecipe) {
         recipe.file = { path: "/images/placeholder.png" };

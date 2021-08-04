@@ -107,7 +107,6 @@ module.exports = {
 
           const deleteFilesPromise = recipesFile.map(async (file) => {
             const fileRecipe = await FileRecipe.findOne({ where: { file_id: file.id } });
-            console.log(fileRecipe);
 
             await FileRecipe.delete(fileRecipe.id);
 

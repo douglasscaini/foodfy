@@ -20,7 +20,11 @@
       {% for recipe in recipes %}
         <div class="card">
           <a href="/recipes/{{recipe.id}}">
-            <img src="{{recipe.files[0].path}}" alt="Imagem de {{recipe.chef.name}}">
+            {% if not recipe.files[0].path %}
+              <img src="/images/placeholder.png">
+            {% else %}
+              <img src="{{recipe.files[0].path}}" alt="Imagem de {{recipe.title}}">
+            {% endif %}
             <h4>{{recipe.title}}</h4>
             <p>por {{recipe.chef.name}}</p>
           </a>

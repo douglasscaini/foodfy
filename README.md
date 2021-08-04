@@ -49,7 +49,7 @@
     <td colspan="1">Área Administrativa</td>
   </tr>
   <tr>
-    <td><img src="./.github/main.gif" width=1000px /></td></td>
+    <td><img src="./.github/admin.gif" width=1000px /></td></td>
   </tr>
 </table>
 
@@ -84,9 +84,6 @@ $ 123
 ## :triangular_flag_on_post: Desafio <a name="challenge"></a>
 
 > Aprender os principais conceitos para desenvolvimento de uma aplicação completa.
-
-> Placeholder-recipe
-> Senão tiver a imagem, tratar com o placeholder;
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 

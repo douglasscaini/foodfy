@@ -184,7 +184,7 @@ module.exports = {
 
       return res.render("admin/recipes/index.njk", { recipes });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   },
 };
