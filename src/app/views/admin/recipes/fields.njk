@@ -8,9 +8,9 @@
         <input
         id="recipes-photos-input"
         type="file"
-        name="recipes-photos"
+        name="photos"
         accept="/image/*"
-        onChange="PhotosUploud.handleFileInput(event)"
+        onChange="PhotosUpload.handleFileInput(event, 5)"
         multiple
       >
         <p class="material-icons">add</p>
@@ -23,7 +23,7 @@
               <img src="{{file.path}}" alt="Imagem de {{recipe.title}}">
               <i
             class="material-icons"
-            onclick="PhotosUploud.removeOldPhoto(event)"
+            onclick="PhotosUpload.removeOldPhoto(event)"
           >
           close
           </i>

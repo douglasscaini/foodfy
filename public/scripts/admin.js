@@ -50,42 +50,47 @@ function addPreparation() {
 }
 
 // UPLOAD PHOTOS LOGIC
-const PhotosUploud = {
+const PhotosUpload = {
   input: "",
   preview: document.querySelector(".photos-preview"),
-  uploudLimit: 5,
+  uploadLimit: "",
   files: [],
-  handleFileInput(event) {
+  handleFileInput(event, uploadLimit) {
     const { files: fileList } = event.target;
 
-    PhotosUploud.input = event.target;
+    PhotosUpload.input = event.target;
+    PhotosUpload.uploadLimit = uploadLimit;
 
-    if (PhotosUploud.hasLimit(event)) return;
+    if (PhotosUpload.hasLimit(event)) {
+      PhotosUpload.updateInputFiles();
+
+      return;
+    }
 
     Array.from(fileList).forEach((file) => {
-      PhotosUploud.files.push(file);
+      PhotosUpload.files.push(file);
 
       const reader = new FileReader();
 
       reader.onload = () => {
         const image = new Image();
         image.src = String(reader.result);
-        const div = PhotosUploud.getContainer(image);
-        PhotosUploud.preview.appendChild(div);
+        const div = PhotosUpload.getContainer(image);
+        PhotosUpload.preview.appendChild(div);
       };
 
       reader.readAsDataURL(file);
     });
 
-    PhotosUploud.input.files = PhotosUploud.getAllFiles();
+    PhotosUpload.updateInputFiles();
   },
 
   hasLimit(event) {
-    const { uploudLimit, input, preview } = PhotosUploud;
+    const { uploadLimit, input, preview } = PhotosUpload;
     const { files: fileList } = input;
 
-    if (fileList.length > uploudLimit) {
-      alert(`Envie no máximo ${uploudLimit} fotos!`);
+    if (fileList.length > uploadLimit) {
+      alert(`Envie no máximo ${uploadLimit} fotos!`);
       event.preventDefault();
 
       return true;
@@ -101,7 +106,7 @@ const PhotosUploud = {
 
     const totalPhotos = fileList.length + photosDiv.length;
 
-    if (totalPhotos > uploudLimit) {
+    if (totalPhotos > uploadLimit) {
       alert("Você atingiu o limite máximo de fotos!");
       event.preventDefault();
 
@@ -113,7 +118,7 @@ const PhotosUploud = {
 
   getAllFiles() {
     const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer();
-    PhotosUploud.files.forEach((file) => dataTransfer.items.add(file));
+    PhotosUpload.files.forEach((file) => dataTransfer.items.add(file));
 
     return dataTransfer.files;
   },
@@ -121,9 +126,9 @@ const PhotosUploud = {
   getContainer(image) {
     const div = document.createElement("div");
     div.classList.add("photo");
-    div.onclick = PhotosUploud.removePhoto;
+    div.onclick = PhotosUpload.removePhoto;
     div.appendChild(image);
-    div.appendChild(PhotosUploud.getRemoveButton());
+    div.appendChild(PhotosUpload.getRemoveButton());
 
     return div;
   },
@@ -138,10 +143,14 @@ const PhotosUploud = {
 
   removePhoto(event) {
     const photoDiv = event.target.parentNode;
-    const photosArray = Array.from(PhotosUploud.preview.children);
-    const index = photosArray.indexOf(photoDiv);
-    PhotosUploud.files.splice(index, 1);
-    PhotosUploud.input.files = PhotosUploud.getAllFiles();
+    const newFiles = Array.from(PhotosUpload.preview.children).filter(function (file) {
+      if (file.classList.contains("photo") && !file.getAttribute("id")) return true;
+    });
+
+    const index = newFiles.indexOf(photoDiv);
+    PhotosUpload.files.splice(index, 1);
+
+    PhotosUpload.updateInputFiles();
     photoDiv.remove();
   },
 
@@ -157,5 +166,9 @@ const PhotosUploud = {
     }
 
     photoDiv.remove();
+  },
+
+  updateInputFiles() {
+    PhotosUpload.input.files = PhotosUpload.getAllFiles();
   },
 };

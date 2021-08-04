@@ -15,8 +15,8 @@ routes.get("/", onlyUsers, RecipeController.index);
 routes.get("/create", onlyUsers, RecipeController.create);
 routes.get("/:id", onlyUsers, RecipeController.show);
 routes.get("/:id/edit", onlyUsers, recipePermission, RecipeController.edit);
-routes.post("/", onlyUsers, multer.array("recipes-photos", 6), RecipeValidator.post, RecipeController.post);
-routes.put("/", onlyUsers, multer.array("recipes-photos", 6), RecipeValidator.put, RecipeController.put);
+routes.post("/", onlyUsers, multer.array("photos", 5), RecipeValidator.post, RecipeController.post);
+routes.put("/", onlyUsers, multer.array("photos", 5), RecipeValidator.put, RecipeController.put);
 routes.delete("/", onlyUsers, RecipeController.delete);
 
 module.exports = routes;

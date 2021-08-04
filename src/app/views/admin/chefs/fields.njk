@@ -14,7 +14,7 @@
           <img src="{{chef.file.path}}" alt="Imagem de {{chef.name}}">
           <i
             class="material-icons"
-            onclick="PhotosUploud.removeOldPhoto(event)"
+            onclick="PhotosUpload.removeOldPhoto(event)"
             required
           >
           close
@@ -29,10 +29,10 @@
     <div class="chefs-photos-upload">
       <input
         type="file"
-        name="chefs-photos"
+        name="photos"
         id="chefs-photos-input"
         accept="/image/*"
-        onChange="PhotosUploud.handleFileInput(event)"
+        onChange="PhotosUpload.handleFileInput(event, 1)"
         multiple
       >
       <p>Enviar Avatar</p>

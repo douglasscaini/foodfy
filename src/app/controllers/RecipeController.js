@@ -104,16 +104,6 @@ module.exports = {
     try {
       const { id, chef_id, title, ingredients, preparation, information } = req.body;
 
-      if (req.files.length != 0) {
-        const newFilesPromise = req.files.map(async (file) => {
-          const file_id = await File.create({ name: file.filename, path: file.path.replace(/\\/g, "/") });
-
-          await FileRecipe.create({ recipe_id: id, file_id });
-        });
-
-        await Promise.all(newFilesPromise);
-      }
-
       if (req.body.removed_files) {
         const removedFiles = req.body.removed_files.split(",");
         const lastIndex = removedFiles.length - 1;
@@ -129,6 +119,21 @@ module.exports = {
         });
 
         await Promise.all(removedFilesPromise);
+      }
+
+      if (req.files.length != 0) {
+        const oldFiles = await File.findFilesRecipe(id);
+        const totalFiles = oldFiles.length + req.files.length;
+
+        if (totalFiles <= 5) {
+          const newFilesPromise = req.files.map(async (file) => {
+            const file_id = await File.create({ name: file.filename, path: file.path.replace(/\\/g, "/") });
+
+            await FileRecipe.create({ recipe_id: id, file_id });
+          });
+
+          await Promise.all(newFilesPromise);
+        }
       }
 
       Recipe.update(id, { chef_id, title, ingredients, preparation, information });

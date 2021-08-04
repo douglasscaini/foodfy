@@ -65,15 +65,8 @@ module.exports = {
 
   async put(req, res) {
     try {
-      let fileId;
-
-      if (req.files.length != 0) {
-        const { filename, path } = req.files[0];
-        fileId = await File.create({ name: filename, path: path.replace(/\\/g, "/") });
-      }
-
       const { id, name } = req.body;
-      await Chef.update(id, { name, file_id: fileId || req.body.file_id });
+      let fileId;
 
       if (req.body.removed_files) {
         let removedFileId = req.body.removed_files.replace(",", "");
@@ -82,6 +75,17 @@ module.exports = {
         unlinkSync(file.path);
         await File.delete(removedFileId);
       }
+
+      if (req.files.length != 0) {
+        const totalFiles = req.files.length + 1;
+
+        if (totalFiles <= 1) {
+          const { filename, path } = req.files[0];
+          fileId = await File.create({ name: filename, path: path.replace(/\\/g, "/") });
+        }
+      }
+
+      await Chef.update(id, { name, file_id: fileId || req.body.file_id });
 
       return res.render(`parts/animations/success.njk`, {
         message: "Chef atualizado com sucesso!",

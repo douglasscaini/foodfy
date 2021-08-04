@@ -85,11 +85,8 @@ $ 123
 
 > Aprender os principais conceitos para desenvolvimento de uma aplicação completa.
 
-> Input vazio na edição ou criação
 > Placeholder-recipe
 > Senão tiver a imagem, tratar com o placeholder;
-> Verificar lógica de salvar somente uma imagem para o chef (create, put);
-> Corrigir multer images
 
 ## :heavy_check_mark: Tecnologias <a name="technologies"></a>
 

@@ -13,8 +13,8 @@ routes.get("/", onlyUsers, ChefController.index);
 routes.get("/create", onlyUsers, isAdmin, ChefController.create);
 routes.get("/:id", onlyUsers, ChefController.show);
 routes.get("/:id/edit", onlyUsers, isAdmin, ChefController.edit);
-routes.post("/", onlyUsers, isAdmin, multer.array("chefs-photos", 6), ChefValidator.post, ChefController.post);
-routes.put("/", onlyUsers, isAdmin, multer.array("chefs-photos", 6), ChefValidator.put, ChefController.put);
+routes.post("/", onlyUsers, isAdmin, multer.array("photos", 1), ChefValidator.post, ChefController.post);
+routes.put("/", onlyUsers, isAdmin, multer.array("photos", 1), ChefValidator.put, ChefController.put);
 routes.delete("/", onlyUsers, isAdmin, ChefController.delete);
 
 module.exports = routes;
